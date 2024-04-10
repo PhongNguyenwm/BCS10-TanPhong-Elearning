@@ -1,5 +1,6 @@
 header {
   position: fixed;
+  width: 100%;
 }
 .visible {
   top: 0;
@@ -8,4 +9,51 @@ header {
 .hidden {
   top: -100px;
   transition: top 0.8s ease;
+}
+
+$hover-color: rgb(250 204 51);
+.btn-danhmuc {
+  height: 40px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.875rem;
+
+  &:hover {
+    background-color: $hover-color !important;
+    color: black !important;
+    border-color: transparent !important;
+  }
+}
+
+.ant-dropdown-menu {
+  background-color: rgba(253, 224, 71, 0.7) !important;
+}
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-submenu-title {
+  color: black !important;
+  font-weight: 700 !important;
+}
+.ant-dropdown-menu-item-active {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.ant-btn-primary {
+  background: rgb(253 224 71);
+  color: black;
+
+  &:hover {
+    background-color: $hover-color !important;
+    color: black !important;
+  }
+}
+
+.ant-input-outlined {
+  &:hover {
+    border-color: $hover-color !important;
+  }
+  &:focus,
+  &:focus-within {
+    border-color: $hover-color !important;
+  }
 }
