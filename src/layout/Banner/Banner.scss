@@ -1,0 +1,23 @@
+.banner_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  .img_item {
+    position: absolute;
+    object-fit: contain;
+    object-position: center;
+    left: 58%;
+    bottom: 190px;
+    width: 150px;
+    height: auto;
+  }
+}
+
+.btn_content {
+  background-color: #f6ba35;
+  color: #fff;
+  padding: 10px 20px;
+}

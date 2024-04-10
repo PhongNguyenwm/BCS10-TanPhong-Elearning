@@ -6,3 +6,5 @@ Một số thư viện cần cài đặt cho dự án:
 -sass
 -antd
 -formik + yup
+- react lotties
+-react spring
