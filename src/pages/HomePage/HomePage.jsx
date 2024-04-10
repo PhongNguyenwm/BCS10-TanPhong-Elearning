@@ -4,7 +4,7 @@ import Banner from "../../layout/Banner/Banner";
 
 const HomePage = () => {
   return (
-    <div style={{ height: "5000px" }}>
+    <div>
       {/* Header */}
       <Header />
       {/* Banner */}

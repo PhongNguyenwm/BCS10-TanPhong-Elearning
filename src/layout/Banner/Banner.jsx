@@ -3,7 +3,7 @@ import "../Banner/Banner.scss";
 import { useSpring, animated } from "react-spring";
 import Lottie from "react-lottie";
 
-import * as registerAnimation from "./../../assets/animation/register.json";
+import * as registerAnimation from "./../../assets/animation/banner.json";
 
 const defaultOptions = {
   loop: true,
@@ -39,7 +39,7 @@ export default function Banner() {
   }, [charIndex]);
 
   return (
-    <div className="banner" style={{ marginTop: 100 }}>
+    <div className="banner container" style={{ marginTop: 100 }}>
       <div className="grid grid-cols-12 justify-center">
         <div className="banner_content col-span-6">
           <div>
@@ -54,18 +54,20 @@ export default function Banner() {
             <h1 className="text-5xl font-bold mb-5"> đến với môi trường </h1>
             <div className="learning-animation text-5xl font-bold mb-5 text-green-700 ">
               <>
-                {["V", ..."learning"].slice(0, charIndex).map((char, index) => (
-                  <AnimatedChar
-                    key={index}
-                    char={char}
-                    index={index}
-                    style={
-                      char === "V"
-                        ? { fontSize: "50px", marginRight: "3px" }
-                        : { fontSize: "45px", marginRight: "3px" }
-                    }
-                  />
-                ))}
+                {["E", ..."-learning"]
+                  .slice(0, charIndex)
+                  .map((char, index) => (
+                    <AnimatedChar
+                      key={index}
+                      char={char}
+                      index={index}
+                      style={
+                        char === "E"
+                          ? { fontSize: "50px", marginRight: "3px" }
+                          : { fontSize: "45px", marginRight: "3px" }
+                      }
+                    />
+                  ))}
               </>
             </div>
             <button className="btn_content">BẮT ĐẦU NÀO</button>
