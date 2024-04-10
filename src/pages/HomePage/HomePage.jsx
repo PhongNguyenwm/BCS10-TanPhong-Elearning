@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../../layout/Header/Header";
+import Banner from "../../layout/Banner/Banner";
 
 const HomePage = () => {
   return (
@@ -7,6 +8,8 @@ const HomePage = () => {
       {/* Header */}
       <Header />
       {/* Banner */}
+
+      <Banner />
     </div>
   );
 };
