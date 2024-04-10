@@ -1,0 +1,11 @@
+header {
+  position: fixed;
+}
+.visible {
+  top: 0;
+  transition: top 0.8s ease;
+}
+.hidden {
+  top: -100px;
+  transition: top 0.8s ease;
+}
