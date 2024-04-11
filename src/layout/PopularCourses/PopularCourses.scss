@@ -1,0 +1,80 @@
+.course {
+  margin: 20px;
+  margin-top: 50px;
+}
+
+.name_course {
+  background-color: #41b294;
+  display: inline-block;
+  position: absolute;
+  z-index: 10;
+  top: 174px;
+  padding: 0 10px;
+  color: #fff;
+}
+
+.img_course {
+  height: 185px;
+  width: 100%;
+}
+.course_content {
+  color: #f6ba35;
+  font-weight: 600;
+}
+.course_item {
+  position: relative;
+  transition: all 0.5s;
+
+  background-color: #fff;
+
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
+  gap: 20px;
+  height: 90%;
+  margin: 30px; 
+}
+.title_maker {
+  display: flex;
+  align-items: center;
+}
+.img_card_course {
+  height: 40px;
+  width: 40px;
+  padding: 2px;
+  border-color: #f6ba35 transparent;
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid #f6ba35;
+  border-right: 1px solid transparent;
+  border-top: 1px solid #f6ba35;
+  border-radius: 50%;
+}
+.text_name {
+  color: #8c8c8c;
+}
+
+// card footer
+
+.cart_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+.p_footer1 {
+  text-decoration: line-through;
+  font-size: 12px;
+  color: #8c8c8c;
+}
+.p_footer2{
+  color: #41b294;
+
+}
+.textStar{
+  color: #f6ba35 ;
+  font-size: 18px;
+}
+.text_number{
+  font-size: 14px;
+  color: #8c8c8c;
+}
