@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import InputCustom from "../../components/Input/InputCustom";
 import * as registerAnimation from "./../../assets/animation/register.json";
 import Lottie from "react-lottie";
+import bgHoaTiet from "../../assets/img/bgHoaTiet.jpg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { NavLink } from "react-router-dom";
@@ -21,6 +22,7 @@ const SignIn = () => {
       onSubmit: async (values) => {
         try {
           const res = await userManagementServ.logIn(values);
+          console.log(res);
           saveLocalStorage("user", res.data);
           notify(
             "Đăng nhập thành công, khách hàng sẽ được chuyển hướng về trang chủ"
@@ -47,12 +49,19 @@ const SignIn = () => {
     },
   };
   return (
-    <div className="h-screen flex">
+    <div
+      className="h-screen flex"
+      style={{
+        backgroundImage: `url(${bgHoaTiet})`,
+        backgroundSize: "cover",
+        backgroundPosition: "bottom",
+      }}
+    >
       <div className="animation_signIn w-7/12 flex items-center justify-center">
         <Lottie options={defaultOptions} height={400} width={400} />
       </div>
       <div className="form_signIn w-5/12 flex items-center justify-center flex-col">
-        <div className="p-10 border border-gray-400 rounded-md space-y-5">
+        <div className="p-10 border border-black bg-white rounded-md space-y-5">
           <h3 className="text-3xl">Đăng nhập</h3>
           <form onSubmit={handleSubmit} className="space-y-5">
             <InputCustom
@@ -88,7 +97,7 @@ const SignIn = () => {
               </p>
               <button
                 type="submit"
-                className="py-2 px-5  bg-yellow-300 hover:bg-yellow-400 text-black rounded-md w-full mt-2 "
+                className="py-2 px-5  bg-yellow-300 hover:bg-yellow-400 text-black  rounded-md w-full mt-2 "
               >
                 Đăng nhập
               </button>

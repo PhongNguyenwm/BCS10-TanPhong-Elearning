@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import "./../Header/header.scss";
 import { Button, Dropdown, Menu, Input } from "antd";
 import { coursesManagementServ } from "../../services/coursesManagement";
-import { getLocalStorage } from "../../utils/util";
+import { getLocalStorage, saveLocalStorage } from "../../utils/util";
 
 const Header = () => {
   const onSearch = (value, _e, info) => console.log(info?.source, value);
@@ -55,12 +55,15 @@ const Header = () => {
     setIsLoggedIn(checkLocalStorage());
   }, []);
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    // localStorage.removeItem("user");
     setIsLoggedIn(false);
   };
   return (
     <header className={cls}>
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 ">
+      <nav
+        className=" px-4 lg:px-6 py-2.5 text-base "
+        style={{ background: "rgba(255,255,255,.8)" }}
+      >
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <a href="/" className="flex items-center">
             <img src={logo} className="h-20" alt="Logo" />
@@ -78,7 +81,7 @@ const Header = () => {
                 <p className="mr-2 font-bold">{userLocal.hoTen}</p>
                 <button
                   onClick={handleLogout}
-                  className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
+                  className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-sans text-base rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
                 >
                   Đăng xuất
                 </button>
@@ -86,7 +89,7 @@ const Header = () => {
             ) : (
               <NavLink
                 to="/sign-in"
-                className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
+                className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-sans rounded-lg text-base px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
               >
                 Đăng nhập
               </NavLink>
@@ -109,8 +112,9 @@ const Header = () => {
               <li>
                 <Search
                   placeholder="tìm kiếm khoá học"
+                  className="text-base font-sans"
                   allowClear
-                  enterButton="Search"
+                  enterButton="Tìm kiếm"
                   size="large"
                   onSearch={onSearch}
                 />
@@ -118,13 +122,13 @@ const Header = () => {
 
               <li>
                 <Dropdown
-                  className="bg-yellow-300 hover:bg-yellow-400"
+                  className="bg-yellow-300 hover:bg-yellow-400 text-base font-sans"
                   overlay={menu}
                   placement="bottom"
                   arrow
                 >
-                  <Button className="btn-danhmuc bg-yellow-300 hover:bg-yellow-400">
-                    <i className="fa-sharp fa-solid fa-computer mr-2 text-sm" />
+                  <Button className="btn-danhmuc text-base text-center font-sans bg-yellow-300 hover:bg-yellow-400">
+                    <i className="fa-sharp fa-solid fa-computer mr-2 text-base" />
                     Danh mục
                   </Button>
                 </Dropdown>

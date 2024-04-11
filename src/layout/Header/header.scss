@@ -1,6 +1,7 @@
 header {
   position: fixed;
   width: 100%;
+  z-index: 100;
 }
 .visible {
   top: 0;
@@ -17,7 +18,6 @@ $hover-color: rgb(250 204 51);
   padding: 10px 20px;
   border-radius: 6px;
   text-align: center;
-  font-size: 0.875rem;
 
   &:hover {
     background-color: $hover-color !important;
@@ -33,6 +33,8 @@ $hover-color: rgb(250 204 51);
 .ant-dropdown-menu-submenu-title {
   color: black !important;
   font-weight: 700 !important;
+  font-size: 16px;
+  font: 1em roboto;
 }
 .ant-dropdown-menu-item-active {
   background-color: rgba(255, 255, 255, 0.7) !important;
