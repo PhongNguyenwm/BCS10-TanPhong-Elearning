@@ -60,3 +60,20 @@ export default function BoxNumber() {
     </div>
   );
 }
+
+
+// source này nhiều lỗi quá kakaka
+
+// source em đang muốn làm là folderr nào, anh thấy nó đang bị lồng nhau đó cái boxNumber nè anh
+
+// vậy là nó nằm trong folder BCS10-TanPhong-Elearning
+
+// cận thận bị nhầm với ELEARNING_CUOIKHOA
+
+// tự nhiên hết lỗi nhỉ kaka chắc do cái countup của em nãy tại em không gitt add gì được kh start được luôn để em qua master check lại
+ //lúc nào vô cũng phải gõ cái lệnh countup này hả anh yarn add react-countup
+ // à không lệnh đó để cài mà
+
+ // cái chỗ bên ngoài này là sourrce nào vậy em xóa đi anh
+
+ // giờ em git add được r đúng kh anh để e test thử
