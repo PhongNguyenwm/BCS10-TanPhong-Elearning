@@ -4,6 +4,7 @@ import Banner from "../../layout/Banner/Banner";
 import Information from "../../layout/Information/Information";
 import PopularCourses from "../../layout/PopularCourses/PopularCourses";
 import BoxNumber from "../../layout/BoxNumber/BoxNumber";
+import TopInstructors from "../../layout/TopInstructors/TopInstructors";
 
 const HomePage = () => {
   return (
@@ -18,8 +19,10 @@ const HomePage = () => {
       <Information />
       {/* {PopularCourses} */}
       <PopularCourses />
-       {/* BoxNumber */}
-       <BoxNumber/>
+      {/* BoxNumber */}
+      <BoxNumber />
+      {/* Top instructors */}
+      <TopInstructors />
     </div>
   );
 };
