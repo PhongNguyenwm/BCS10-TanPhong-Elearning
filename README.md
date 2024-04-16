@@ -8,3 +8,4 @@ Một số thư viện cần cài đặt cho dự án:
 -formik + yup
 - react lotties
 -react spring
+- react countup
