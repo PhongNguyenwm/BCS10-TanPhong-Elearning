@@ -17,7 +17,7 @@ export default function BoxNumber() {
               </div>
               <div className="text_number">
                 <CountUp className="" end={9000} duration={5} />
-               
+
                 <p className="textNumberTitle font-semibold">Học viên</p>
               </div>
             </div>
@@ -28,7 +28,7 @@ export default function BoxNumber() {
                 <img src={lichNumber} alt="" />
               </div>
               <div className="text_number">
-              <CountUp className="span" end={1000} duration={5} />
+                <CountUp className="span" end={1000} duration={5} />
                 <p class="textNumberTitle font-semibold">Khóa học</p>
               </div>
             </div>
@@ -39,7 +39,7 @@ export default function BoxNumber() {
                 <img src={dongHoCat} alt="" />
               </div>
               <div className="text_number">
-              <CountUp className="span" end={33200} duration={5} />
+                <CountUp className="span" end={33200} duration={5} />
                 <p class="textNumberTitle font-semibold">Giờ Học</p>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function BoxNumber() {
                 <img src={teacher} alt="" />
               </div>
               <div className="text_number">
-              <CountUp className="span" end={400} duration={5} />
+                <CountUp className="span" end={400} duration={5} />
                 <p class="textNumberTitle font-semibold">Giảng viên</p>
               </div>
             </div>
@@ -60,6 +60,5 @@ export default function BoxNumber() {
     </div>
   );
 }
-
 
 // thay đổi
