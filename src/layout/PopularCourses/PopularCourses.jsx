@@ -5,6 +5,7 @@ import "./PopularCourses.scss";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import avartarImage from "../../assets/img/avatar2.bb9626e2.png";
 import ReferenceCourse from "./ReferenceCourse";
+import FrontendReactCourse from "./FrontendReactCourse";
 export default function PopularCourses() {
   const [getCourse, setGetCoure] = useState([]);
   const { Meta } = Card;
@@ -70,6 +71,9 @@ export default function PopularCourses() {
         ))}
       </div>
       <ReferenceCourse />
+      <div className="mt-5">
+        <FrontendReactCourse />
+      </div>
     </div>
   );
 }

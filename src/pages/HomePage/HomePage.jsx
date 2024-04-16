@@ -3,6 +3,7 @@ import Header from "../../layout/Header/Header";
 import Banner from "../../layout/Banner/Banner";
 import Information from "../../layout/Information/Information";
 import PopularCourses from "../../layout/PopularCourses/PopularCourses";
+import BoxNumber from "../../layout/BoxNumber/BoxNumber";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,8 @@ const HomePage = () => {
       <Information />
       {/* {PopularCourses} */}
       <PopularCourses />
+       {/* BoxNumber */}
+       <BoxNumber/>
     </div>
   );
 };
