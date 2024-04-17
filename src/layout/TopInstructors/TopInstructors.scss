@@ -54,23 +54,23 @@
   }
 }
 .slick-slide {
-  width: 200px !important; /* Xóa thuộc tính width */
-  margin-left: 33px;
+  width: 200px !important; 
+  margin-left: 31px;
 }
 
 .slick-dots {
-  display: none; /* Ẩn thanh ngang */
+  display: none;
 }
 
 .slick-prev,
 .slick-next {
-  color: green; /* Màu cho các nút điều hướng */
-  z-index: 9999; /* Đảm bảo các nút điều hướng nằm trên slider */
+  color: green;
+  z-index: 9999; 
 }
 
 .slick-prev:hover,
 .slick-next:hover {
-  color: darkgreen; /* Màu khi hover */
+  color: darkgreen;
 }
 .slick-dots li.slick-active button:before {
   opacity: 0.75;
