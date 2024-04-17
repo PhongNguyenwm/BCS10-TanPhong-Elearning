@@ -5,6 +5,7 @@ import Information from "../../layout/Information/Information";
 import PopularCourses from "../../layout/PopularCourses/PopularCourses";
 import BoxNumber from "../../layout/BoxNumber/BoxNumber";
 import TopInstructors from "../../layout/TopInstructors/TopInstructors";
+import TeachingReview from "../../layout/TeachingReview/TeachingReview";
 
 const HomePage = () => {
   return (
@@ -23,6 +24,8 @@ const HomePage = () => {
       <BoxNumber />
       {/* Top instructors */}
       <TopInstructors />
+      {/* TeachingReview  */}
+      <TeachingReview/>
     </div>
   );
 };
