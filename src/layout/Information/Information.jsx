@@ -2,10 +2,9 @@ import React from "react";
 import "./Information.scss";
 export default function Information() {
   return (
-    <div className="info ">
+    <div className="info">
       <div className="info_content">
         <div className="info_largeitem info_item">
-       
           <div className=" infoItemContent">
             <h3 className="font-bold">Khóa Học</h3>
             <p>

@@ -9,6 +9,8 @@ Một số thư viện cần cài đặt cho dự án:
 
 - react lotties
   -react spring
+  -react countup
+  -react slick
 
 # Tokens:
 
