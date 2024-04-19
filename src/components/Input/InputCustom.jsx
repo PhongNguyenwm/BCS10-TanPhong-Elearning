@@ -13,6 +13,7 @@ const InputCustom = ({
   touched,
   readOnly,
   type = "text",
+  fieldValue,
 }) => {
   // id, label, placeholder sẽ khác nhau giữa các input
 
@@ -20,19 +21,19 @@ const InputCustom = ({
     <div>
       <label
         htmlFor={id}
-        className="block mb-2 text-sm font-medium text-gray-900"
+        className="block mb-2 text-base font-sans text-gray-900"
       >
         {label}
       </label>
       <input
         onBlur={onBlur}
-        value={value}
+        value={fieldValue !== undefined ? fieldValue : value}
         onChange={onChange}
         type={type}
         name={name}
         readOnly={readOnly ? true : false}
         id={id}
-        className={`bg-gray-50 min-w-sm border border-black text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${className} ${
+        className={`bg-gray-50 min-w-sm border border-black text-gray-700 text-base font-sans rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 ${className} ${
           error && touched ? "border-red-500" : ""
         }`}
         placeholder={placeholder}
