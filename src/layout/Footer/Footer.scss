@@ -1,0 +1,72 @@
+.footer {
+  background-color: #f0f8ff;
+  padding: 10px;
+}
+.footer_body {
+  padding: 10px 40px;
+}
+.text_logo {
+  color: black;
+  font-family: "fontPoppin";
+  display: inline-block;
+  position: relative;
+  font-size: 20px;
+  transition: all 0.5s;
+  text-shadow: 5px -2px 3px #54d2c0;
+}
+.text_logo span {
+  color: #41b294;
+}
+.iconLogo {
+  right: 0px;
+  top: 5px;
+  position: absolute;
+}
+.text_logo:hover {
+  transform: scale(1.1);
+}
+.menu_footer li {
+  padding: 5px 0;
+  transition: all 0.5s;
+  font-weight: 500;
+}
+.menu_footer li i {
+  font-size: 16px;
+}
+.iconFooter {
+  display: inline-block;
+  margin: 0 10px;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background: #41b294;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  transition: all 0.5s;
+}
+.menu_footer li:hover {
+  transform: translateY(-3px);
+  color: #41b294;
+}
+.text_footerTitle {
+  font-size: 25px;
+}
+.extra_footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  border-top: 1px solid #d0d0d0;
+  
+  box-sizing: border-box; /* Đảm bảo border tính vào kích thước của phần tử */
+}
+.iconSize{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 5px;
+  transition: all .3s linear;
+}
+.divGlobal i:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Thêm box shadow khi hover vào */
+}
