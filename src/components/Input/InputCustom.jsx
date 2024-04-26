@@ -33,7 +33,7 @@ const InputCustom = ({
         name={name}
         readOnly={readOnly ? true : false}
         id={id}
-        className={`bg-gray-50 min-w-sm border border-black text-gray-700 text-base font-sans rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 ${className} ${
+        className={` min-w-sm border border#d9d9d9 text-gray-700 text-base font-sans rounded-lg hover:border-blue-500 focus:border-blue-500 focus-within:border-blue-500 active:border-blue-500 block w-full p-2 ${className} ${
           error && touched ? "border-red-500" : ""
         }`}
         placeholder={placeholder}
