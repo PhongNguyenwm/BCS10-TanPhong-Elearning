@@ -5,27 +5,73 @@ import { useFormik } from "formik";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import dayjs from "dayjs";
 import * as Yup from "yup";
-import "./addcourse.scss";
 import { NotifyContext } from "../../template/AdminTemplate/AdminTemplate";
 import { useNavigate } from "react-router-dom";
 import { getLocalStorage } from "../../utils/util";
 
-const AddCourse = () => {
+const EditCourse = () => {
   const navigate = useNavigate();
   const notify = useContext(NotifyContext);
-  const [image, setImage] = useState(null);
+  const [courseInfo, setCourseInfo] = useState({});
   const [courseCategories, setCourseCategories] = useState([]);
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [imageUrl, setImageUrl] = useState(courseInfo?.hinhAnh || "");
+  // const [image, setImage] = useState();
+  console.log(courseInfo);
+  const [formData, setFormData] = useState(null);
   useEffect(() => {
     async function fetchCourseCatagories() {
       try {
         const res = await coursesManagementServ.getCoureCatalogs();
         setCourseCategories(res.data);
+        // console.log(res.data);
       } catch (err) {
         console.log(err);
       }
     }
     fetchCourseCatagories();
   }, []);
+
+  useEffect(() => {
+    async function fetchCourseInfo() {
+      try {
+        const courseCategoriesMatch = window.location.pathname.match(
+          /\/sua-khoa-hoc\/([^/]+)$/
+        );
+        if (courseCategoriesMatch) {
+          const courseCode = courseCategoriesMatch[1];
+          const res = await coursesManagementServ.getInfoCourse(courseCode);
+          const modifiedCourseInfo = {
+            ...res.data,
+            maDanhMuc: res.data.danhMucKhoaHoc.maDanhMucKhoahoc,
+            tenDanhMuc: res.data.danhMucKhoaHoc.tenDanhMucKhoaHoc,
+          };
+          console.log(modifiedCourseInfo);
+          setCourseInfo(modifiedCourseInfo);
+          setDataLoaded(true);
+          if (modifiedCourseInfo.hinhAnh) {
+            setImageUrl(modifiedCourseInfo.hinhAnh);
+          }
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchCourseInfo();
+  }, [courseCategories]);
+
+  // useEffect(() => {
+  //   if (formData) {
+  //     coursesManagementServ
+  //       .editCourse(formData)
+  //       .then((res) => {
+  //         console.log(res);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // }, [formData]);
 
   const userLocal = getLocalStorage("user");
   const disableDate = (current) => {
@@ -43,44 +89,53 @@ const AddCourse = () => {
     touched,
     handleChange,
   } = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      maKhoaHoc: "",
-      biDanh: "",
-      tenKhoaHoc: "",
-      moTa: "",
-      luotXem: 0,
-      danhGia: 0,
-      hinhAnh: "",
-      maNhom: "GP01",
-      ngayTao: "",
-      maDanhMucKhoaHoc: "",
-      taiKhoanNguoiTao: "",
+      maKhoaHoc: courseInfo?.maKhoaHoc || "", // Thêm "?." để tránh lỗi nếu courseInfo là null hoặc undefined
+      biDanh: courseInfo?.biDanh || "",
+      tenKhoaHoc: courseInfo?.tenKhoaHoc || "",
+      moTa: courseInfo?.moTa || "",
+      luotXem: courseInfo?.luotXem || 0,
+      danhGia: courseInfo?.danhGia || 0,
+      hinhAnh: courseInfo?.hinhAnh || "",
+      maNhom: courseInfo?.maNhom || "GP01",
+      ngayTao: courseInfo?.ngayTao || "",
+      maDanhMuc: courseInfo?.maDanhMuc || "",
+      tenDanhMuc: courseInfo?.tenDanhMuc || "",
+      taiKhoanNguoiTao: courseInfo?.taiKhoanNguoiTao || "",
     },
     onSubmit: async (values) => {
       try {
         values.taiKhoanNguoiTao = userLocal.taiKhoan;
-        values.maNhom = "GP01";
-        values.luotXem = parseInt(values.luotXem);
         values.biDanh = values.tenKhoaHoc.toLowerCase().replace(/\s+/g, "-");
+
         let formData = new FormData();
-        // sử dụng for in để duyệt object qua từng key và lấy dữ liệu truyền vào formdata
+        if (values.hinhAnh instanceof File) {
+          formData.append("File", values.hinhAnh);
+        } else {
+          // Sử dụng đường dẫn hình ảnh từ API nếu không có hình ảnh từ local
+          formData.append("hinhAnh", values.hinhAnh);
+        }
+
+        // Thêm các trường dữ liệu khác vào formData
         for (let key in values) {
-          if (key == "hinhAnh") {
-            formData.append("File", values[key]);
-          } else {
+          if (key !== "hinhAnh") {
             formData.append(key, values[key]);
           }
         }
-        console.log(formData);
-        const res = await coursesManagementServ.addCourse(formData);
+        setFormData(formData);
+
+        console.log("Values:", values);
+
+        const res = await coursesManagementServ.editCourse(formData);
+        console.log("Response from editCourse: ", res);
         notify(
-          "thêm khoá học thành công! chuyển hướng về trang quản lý khoá học"
+          "Sửa khoá học thành công! chuyển hướng về trang quản lý khoá học"
         );
         resetForm();
         setTimeout(() => {
           navigate("/admin/quan-li-khoa-hoc");
         }, 1000);
-        console.log(res);
       } catch (error) {
         console.log(error);
         notify(error.response.data);
@@ -92,15 +147,13 @@ const AddCourse = () => {
       moTa: Yup.string().required("Vui lòng không bỏ trống"),
       luotXem: Yup.string().required("Vui lòng không bỏ trống"),
       ngayTao: Yup.string().required("Vui lòng không bỏ trống"),
-      maDanhMucKhoaHoc: Yup.string().required(
-        "Vui lòng chọn danh mục khoá học"
-      ),
+      maDanhMuc: Yup.string().required("Vui lòng chọn danh mục khoá học"),
     }),
   });
 
   return (
     <div>
-      <h3 className="text-4xl mb-5">Thêm khoá học mới</h3>
+      <h3 className="text-4xl mb-5">Sửa khoá học</h3>
       <form onSubmit={handleSubmit}>
         <div className="flex mb-5">
           <div className="take-pic flex-col w-6/12 ">
@@ -108,30 +161,34 @@ const AddCourse = () => {
               Hình ảnh
             </label>
             <br />
-            <input
-              name="hinhAnh"
-              className="mb-5 mt-2 font-sans text-base"
-              onChange={(event) => {
-                let urlImage = URL.createObjectURL(event.target.files[0]);
-                setImage(urlImage);
-                setFieldValue("hinhAnh", event.target.files[0]);
-              }}
-              type="file"
-            />
-            {image && (
+            {imageUrl && (
               <div className="relative">
-                <img className="w-2/3" src={image} alt="" />
+                <img className="w-2/3" src={imageUrl} alt="" />
                 <button
                   className="absolute font-black text-5xl top-0 right-28 mt-2 mr-2 text-red-500"
                   onClick={() => {
-                    setImage(null);
+                    setImageUrl("");
                     setFieldValue("hinhAnh", "");
-                    document.querySelector('input[type="file"]').value = null;
+                    // document.querySelector('input[type="file"]').value = null;
                   }}
                 >
                   <i class="fa-sharp fa-regular fa-trash-can"></i>
                 </button>
               </div>
+            )}
+            {!imageUrl && (
+              <input
+                name="hinhAnh"
+                className="mb-5 mt-2 font-sans text-base"
+                onChange={(event) => {
+                  let urlImage = URL.createObjectURL(event.target.files[0]);
+                  setImageUrl(urlImage);
+                  if (event.target.files.length > 0) {
+                    setFieldValue("hinhAnh", event.target.files[0]);
+                  }
+                }}
+                type="file"
+              />
             )}
           </div>
 
@@ -176,7 +233,7 @@ const AddCourse = () => {
 
             <div className="w-3/4 mb-5 ">
               <label
-                htmlFor="maDanhMucKhoaHoc"
+                htmlFor="maDanhMuc"
                 className="block mb-2 text-base font-sans text-gray-700"
               >
                 Danh mục khoá học
@@ -184,25 +241,26 @@ const AddCourse = () => {
               <Select
                 className="mt-1 block w-full bg-gray-50"
                 size="large"
-                id="maDanhMucKhoaHoc"
-                name="maDanhMucKhoaHoc"
-                onChange={(value) => setFieldValue("maDanhMucKhoaHoc", value)}
+                id="maDanhMuc"
+                name="maDanhMuc"
+                onChange={(value) => setFieldValue("maDanhMuc", value)}
                 onBlur={handleBlur}
-                value={values.maDanhMucKhoaHoc}
+                // value={values.tenDanhMucKhoaHoc}
               >
-                {courseCategories.map((category) => (
-                  <Select.Option
-                    key={category.maDanhMuc}
-                    value={category.maDanhMuc}
-                  >
-                    {category.tenDanhMuc}
-                  </Select.Option>
-                ))}
+                {dataLoaded && courseCategories.length > 0
+                  ? // Hiển thị tùy chọn chỉ khi `dataLoaded` và `courseCategories` có dữ liệu
+                    courseCategories.map((category) => (
+                      <Select.Option
+                        key={category.maDanhMuc}
+                        value={category.maDanhMuc}
+                      >
+                        {category.tenDanhMuc}
+                      </Select.Option>
+                    ))
+                  : null}
               </Select>
-              {touched.maDanhMucKhoaHoc && errors.maDanhMucKhoaHoc && (
-                <p className="text-red-500 text-sm">
-                  {errors.maDanhMucKhoaHoc}
-                </p>
+              {touched.maDanhMuc && errors.maDanhMuc && (
+                <p className="text-red-500 text-sm">{errors.maDanhMuc}</p>
               )}
             </div>
 
@@ -286,8 +344,9 @@ const AddCourse = () => {
             // }}
             className="px-3 py-4 border text-base font-sans rounded text-black bg-yellow-300 hover:bg-yellow-400"
             type="submit"
+            onSubmit={handleSubmit}
           >
-            Thêm khoá học
+            Sửa khoá học
           </button>
         </div>
       </form>
@@ -295,4 +354,4 @@ const AddCourse = () => {
   );
 };
 
-export default AddCourse;
+export default EditCourse;

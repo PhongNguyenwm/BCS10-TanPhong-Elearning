@@ -7,6 +7,7 @@ import UserTemplate from "../template/UserTemplate/UserTemplate";
 import AdminTemplate from "../template/AdminTemplate/AdminTemplate";
 import CourseManagement from "../pages/CourseManagement/CourseManagement";
 import AddCourse from "../pages/AddCourse/AddCourse";
+import EditCourse from "../pages/EditCourse/EditCourse";
 const useRoutesCustom = () => {
   const routes = useRoutes([
     {
@@ -42,6 +43,10 @@ const useRoutesCustom = () => {
         {
           path: "them-khoa-hoc",
           element: <AddCourse />,
+        },
+        {
+          path: "quan-li-khoa-hoc/sua-khoa-hoc/:maKhoaHoc",
+          element: <EditCourse />,
         },
       ],
     },
