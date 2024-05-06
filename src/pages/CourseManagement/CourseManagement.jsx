@@ -5,74 +5,94 @@ import { NavLink } from "react-router-dom";
 import { NotifyContext } from "../../template/AdminTemplate/AdminTemplate";
 import { BookOutlined } from "@ant-design/icons";
 import { coursesManagementServ } from "../../services/coursesManagement";
+import moment from "moment";
 
 const CourseManagement = () => {
   const notify = useContext(NotifyContext);
-  const [deleteFilmId, setDeleteFilmId] = useState("");
+  const [deleteCourse, setDeleteCourse] = useState("");
   const [arrCourse, setArrCourse] = useState([]);
   const [pagination, setPagination] = useState({
     current: 1,
     page: 10,
   });
+  const [originalArrCourse, setOriginalArrCourse] = useState([]);
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const res = await coursesManagementServ.getCourseList();
-        const sortCourses = res.data.reverse();
-        setArrCourse(sortCourses);
+
+        // Chuyển ngày tạo thành đối tượng moment và lưu vào mảng mới
+        const coursesWithDate = res.data.map((course) => ({
+          ...course,
+          momentDate: moment(course.ngayTao, "DD-MM-YYYY"),
+        }));
+
+        // Sắp xếp mảng mới theo ngày tạo mới nhất đến cũ nhất
+        const sortedCourses = coursesWithDate.sort((a, b) => {
+          return b.momentDate.diff(a.momentDate, "days");
+        });
+
+        // Xóa trường momentDate ra khỏi mỗi đối tượng trong mảng đã sắp xếp
+        const sortedCoursesWithoutMomentDate = sortedCourses.map((course) => {
+          const { momentDate, ...rest } = course;
+          return rest;
+        });
+
+        setArrCourse(sortedCoursesWithoutMomentDate);
+        setOriginalArrCourse(sortedCoursesWithoutMomentDate);
       } catch (err) {
         console.log(err);
       }
     };
     fetchCourses();
-  }, [notify]);
+  }, [notify, deleteCourse, pagination]);
 
   // useEffect(() => {
   //   setArrMovie(initialArrMovie);
   // }, [initialArrMovie]);
 
-  // const handleDeleteFilm = (maPhim) => {
-  //   if (window.confirm("Bạn có chắc muốn xoá phim này?")) {
-  //     quanLyPhimServ
-  //       .deleteFilm(maPhim)
-  //       .then((res) => {
-  //         setDeleteFilmId(maPhim);
-  //         notify("Xoá phim thành công");
-  //         dispatch(getAllMovieThunk("abc"));
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // };
+  const handleDeleteCourse = async (maKhoaHoc) => {
+    if (window.confirm("Bạn có chắc muốn xoá khoá học này?")) {
+      try {
+        const res = await coursesManagementServ.deleteCourse(maKhoaHoc);
+        setDeleteCourse(maKhoaHoc);
+        notify("Xoá khoá học thành công");
+      } catch (err) {
+        notify(err.response.data);
+      }
+    }
+  };
 
   const { Search } = Input;
-
-  // const onSearch = async (value = "") => {
-  //   notify("Đang tìm kiếm...");
-  //   try {
-  //     let res;
-  //     if (value.trim() !== "") {
-  //       res = await quanLyPhimServ.getAllMovie(value);
-  //     } else {
-  //       res = await quanLyPhimServ.getAllMovie();
-  //     }
-  //     setArrMovie(res.data.content);
-  //   } catch (err) {
-  //     console.log("Error while searching", err);
-  //   }
-  // };
+  const onSearch = async (value = "") => {
+    notify("Đang tìm kiếm...");
+    try {
+      if (value.trim() !== "") {
+        const filteredCourses = originalArrCourse.filter((course) =>
+          course.tenKhoaHoc.toLowerCase().includes(value.toLowerCase())
+        );
+        setArrCourse(filteredCourses);
+      } else {
+        setArrCourse(originalArrCourse);
+      }
+    } catch (err) {
+      console.log("Error while searching", err);
+    }
+  };
+  const onSearchChange = (e) => {
+    const value = e.target.value.trim();
+    if (value === "") {
+      setArrCourse(originalArrCourse);
+    }
+  };
 
   const columns = [
     {
-      title: "STT",
-      dataIndex: "index",
+      title: "Ngày Tạo",
+      dataIndex: "ngayTao",
       width: "5%",
       align: "center",
-      render: (text, record, index) =>
-        (pagination.current - 1) * pagination.pageSize + index + 1,
-      // sorter: (a, b) => a.key - b.key,
-      // defaultSortOrder: "descend",
+      // sorter: (a, b) => new Date(b.ngayTao) - new Date(a.ngayTao),
     },
     {
       title: "Mã khoá học",
@@ -128,7 +148,7 @@ const CourseManagement = () => {
               <NavLink
                 key={1}
                 className="mr-5 text-xl"
-                to={`/admin/quan-li-khoa-hoc/edit/${course.maKhoaHoc}`}
+                to={`/admin/quan-li-khoa-hoc/sua-khoa-hoc/${course.maKhoaHoc}`}
               >
                 <button className="text-blue-400 hover:text-blue-500 font-sans text-base">
                   Sửa
@@ -139,7 +159,7 @@ const CourseManagement = () => {
                 style={{ cursor: "pointer" }}
                 key={2}
                 className="text-2xl mr-5"
-                // onClick={() => handleDeleteFilm(course.maKhoaHoc)}
+                onClick={() => handleDeleteCourse(course.maKhoaHoc)}
               >
                 <button className="text-red-400 hover:text-red-500 font-sans text-base">
                   Xoá
@@ -157,7 +177,7 @@ const CourseManagement = () => {
   ];
   const data = arrCourse;
   const onChange = (pagination, filters, sorter, extra) => {
-    setPagination(pagination);
+    // setPagination(pagination);
   };
 
   return (
@@ -169,7 +189,8 @@ const CourseManagement = () => {
           placeholder="Tìm kiếm khoá học"
           allowClear
           size="large"
-          // onSearch={onSearch}
+          onSearch={onSearch}
+          onChange={onSearchChange}
         />
         <NavLink
           className="items-center font-sans text-base text-black border-spacing-1 border px-4 py-3 rounded bg-yellow-300 hover:bg-yellow-400 hover:text-black"
@@ -184,7 +205,7 @@ const CourseManagement = () => {
         className="text-center"
         columns={columns}
         dataSource={data}
-        pagination={pagination}
+        // pagination={pagination}
         onChange={onChange}
         rowKey={(record) => record.maKhoaHoc}
       />

@@ -1,5 +1,6 @@
 import { getLocalStorage } from "../utils/util";
 import { http } from "./config";
+const userLocal = getLocalStorage("user");
 
 export const coursesManagementServ = {
   getCoureCatalogs: () => {
@@ -8,12 +9,24 @@ export const coursesManagementServ = {
   getCourseList: () => {
     return http.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01");
   },
-  addCourse: (formData) => {
-    const userLocal = getLocalStorage("user");
-    return http.post("/QuanLyKhoaHoc/ThemKhoaHoc", formData, {
+  getInfoCourse: (courseCode) => {
+    return http.get(`QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${courseCode}`);
+  },
+  deleteCourse: (courseCode) => {
+    return http.delete(`/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${courseCode}`, {
       headers: {
-        Authorization: `bearer ${userLocal.accessToken}`,
+        Authorization: `Bearer ${userLocal.accessToken}`,
       },
     });
+  },
+  addCourse: (formData) => {
+    return http.post("/QuanLyKhoaHoc/ThemKhoaHocUploadHinh", formData, {
+      headers: {
+        Authorization: `Bearer ${userLocal.accessToken}`,
+      },
+    });
+  },
+  editCourse: (formdata) => {
+    return http.post("/QuanLyKhoaHoc/CapNhatKhoaHocUpload", formdata);
   },
 };
