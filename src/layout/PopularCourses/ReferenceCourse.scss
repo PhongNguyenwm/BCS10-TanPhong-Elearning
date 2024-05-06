@@ -71,6 +71,13 @@
   padding: 15px;
   width: 100%;
   color: #fff;
+  display: block;
+  text-align: center;
+  transition: all 0.7s ease;
+}
+.btn_cart:hover {
+  background-color: #2c7a6d;
+  color: #fff;
 }
 .custom-tooltip.custom-tooltip-second .ant-tooltip-inner {
   left: 40% !important;
