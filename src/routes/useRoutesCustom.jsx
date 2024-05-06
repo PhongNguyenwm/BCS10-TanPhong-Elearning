@@ -8,6 +8,7 @@ import AdminTemplate from "../template/AdminTemplate/AdminTemplate";
 import CourseManagement from "../pages/CourseManagement/CourseManagement";
 import AddCourse from "../pages/AddCourse/AddCourse";
 import EditCourse from "../pages/EditCourse/EditCourse";
+import Detail from "../pages/Detail/Detail";
 const useRoutesCustom = () => {
   const routes = useRoutes([
     {
@@ -25,6 +26,36 @@ const useRoutesCustom = () => {
         {
           path: "sign-up",
           element: <SignUp />,
+        },
+        {
+          path: "detail/:maKhoaHoc",
+          element: <Detail  />,
+        },
+        {
+          path: "detail/:maKhoaHoc",
+          element: <Detail  />,
+        },
+      ],
+    },
+    {
+      path: "/admin",
+      element: <AdminTemplate />,
+      children: [
+        {
+          path: "quan-li-khoa-hoc",
+          element: <CourseManagement />,
+        },
+        {
+          element: <CourseManagement />,
+          index: true,
+        },
+        {
+          path: "them-khoa-hoc",
+          element: <AddCourse />,
+        },
+        {
+          path: "quan-li-khoa-hoc/sua-khoa-hoc/:maKhoaHoc",
+          element: <EditCourse />,
         },
       ],
     },

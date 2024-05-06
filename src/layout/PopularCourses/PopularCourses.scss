@@ -31,7 +31,7 @@
   box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
   gap: 20px;
   height: 90%;
-  margin: 30px; 
+  margin: 30px;
 }
 .title_maker {
   display: flex;
@@ -66,15 +66,60 @@
   font-size: 12px;
   color: #8c8c8c;
 }
-.p_footer2{
+.p_footer2 {
   color: #41b294;
-
 }
-.textStar{
-  color: #f6ba35 ;
+.textStar {
+  color: #f6ba35;
   font-size: 18px;
 }
-.text_number{
+.text_number {
   font-size: 14px;
   color: #8c8c8c;
+}
+.card-top {
+  position: relative;
+}
+.card-sale {
+  position: absolute;
+    top: -360px;
+    left: -5px;
+    width: 85px;
+    height: 30px;
+    padding: 5px 8px 4px;
+    color: #fff;
+    background-color: red;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+
+.card-sale {
+  position: relative; /* Đặt position relative để pseudo-elements có thể được định vị dựa trên nó */
+}
+
+.card-sale::before,
+.card-sale::after {
+  content: "";
+  position: absolute;
+}
+
+.card-sale::before {
+  content: "";
+ left: 0px;
+  bottom: -9px;
+  border-bottom: 10px solid transparent;
+  border-right: 5px solid red;
+  -webkit-filter: brightness(.8);
+  filter: brightness(.8);
+}
+
+.card-sale::after {
+  content: "";
+  top: 0;
+  right: -12px;
+  border-color: red transparent;
+  border-style: solid;
+  border-width: 15px 12px 15px 0;
 }

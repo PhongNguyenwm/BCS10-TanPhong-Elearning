@@ -29,7 +29,10 @@ export default function PopularCourses() {
       </div>
       <div className=" grid grid-cols-12 container mb-5">
         {getCourse.slice(3, 7).map((item, index) => (
-          <div key={item.maKhoaHoc} className=" course_item grid col-span-3 ">
+          <NavLink
+            to={`/detail/${item.maKhoaHoc}`} key={item.maKhoaHoc}
+            className=" course_item grid col-span-3 "
+          >
             <div className="cart">
               <img className="img_course" src={item.hinhAnh} />
               <p className="name_course ">{item.tenKhoaHoc}</p>
@@ -67,7 +70,7 @@ export default function PopularCourses() {
                 </div>
               </div>
             </div>
-          </div>
+          </NavLink>
         ))}
       </div>
       <ReferenceCourse />

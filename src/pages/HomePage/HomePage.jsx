@@ -6,6 +6,8 @@ import PopularCourses from "../../layout/PopularCourses/PopularCourses";
 import BoxNumber from "../../layout/BoxNumber/BoxNumber";
 import TopInstructors from "../../layout/TopInstructors/TopInstructors";
 import TeachingReview from "../../layout/TeachingReview/TeachingReview";
+import Footer from "../../layout/Footer/Footer";
+import BackToTop from "../../layout/BackToTop/BackToTop";
 
 const HomePage = () => {
   return (
@@ -25,7 +27,11 @@ const HomePage = () => {
       {/* Top instructors */}
       <TopInstructors />
       {/* TeachingReview  */}
-      <TeachingReview/>
+      <TeachingReview />
+      {/* Footer  */}
+      <Footer />
+      {/* BackToTop */} 
+      <BackToTop/>
     </div>
   );
 };
