@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage/HomePage";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
 import UserTemplate from "../template/UserTemplate/UserTemplate";
+import Detail from "../pages/Detail/Detail";
 const useRoutesCustom = () => {
   const routes = useRoutes([
     {
@@ -21,6 +22,10 @@ const useRoutesCustom = () => {
         {
           path: "sign-up",
           element: <SignUp />,
+        },
+        {
+          path: "detail/:maKhoaHoc",
+          element: <Detail  />,
         },
       ],
     },

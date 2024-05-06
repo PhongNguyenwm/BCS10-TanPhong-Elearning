@@ -7,4 +7,8 @@ export const coursesManagementServ = {
   getCourseList: () => {
     return http.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01");
   },
+  getCourseListDetail: (maKhoaHoc) => {
+    console.log("🚀 ~ maKhoaHoc:", maKhoaHoc)
+    return http.get(`/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${maKhoaHoc}`);
+  },
 };

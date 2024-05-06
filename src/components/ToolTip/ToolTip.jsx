@@ -17,7 +17,7 @@ export default function ToolTip({
         overlayClassName={overlayClassName}
         title={title}
       >
-        <div className="cart">
+        <div className="cart-top">
           {/* Your cart content */}
           <div className="cart">
             <img className="img_course" src={item.hinhAnh} />
@@ -60,7 +60,11 @@ export default function ToolTip({
                 </p>
               </div>
             </div>
+            <div className="card-sale">
+            <span>Yêu Thích</span>
           </div>
+          </div>
+          
         </div>
       </Tooltip>
     </div>
