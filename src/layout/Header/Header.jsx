@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from "./../../assets/img/logo.png";
 import avatar from "./../../assets/img/avatar.png";
 import { NavLink } from "react-router-dom";
-import "./../Header/header.scss";
+import styles from "./../Header/header.scss";
 import { Button, Dropdown, Menu, Input } from "antd";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import { getLocalStorage, saveLocalStorage } from "../../utils/util";
@@ -59,7 +59,7 @@ const Header = () => {
     setIsLoggedIn(false);
   };
   return (
-    <header className={cls}>
+    <header className={`${styles.header}, ${cls}`}>
       <nav
         className=" px-4 lg:px-6 py-2.5 text-base "
         style={{ background: "rgba(255,255,255,.8)" }}
