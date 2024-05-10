@@ -76,7 +76,7 @@ export default function TopInstructors() {
             <div className="grid col-span-1 intructors_hover ">
               <div className="intructors_content">
                 <img src={instructor1} alt="Instructor 1" />
-                <h6>Big DadMoon</h6>
+                <h6 className="pb-2 font-semibold">Big DadMoon</h6>
                 <div className="intructors_text">
                   <p>Chuyên Gia Ngôn Ngữ</p>
                   <p>Vue Js</p>
@@ -95,7 +95,7 @@ export default function TopInstructors() {
             <div className="grid col-span-1 intructors_hover">
               <div className="intructors_content">
                 <img src={instructor3} alt="Instructor 3" />
-                <h6>Bladin Slaham</h6>
+                <h6 className="pb-2 font-semibold">Bladin Slaham</h6>
                 <div className="intructors_text">
                   <p>Chuyên gia hệ thống</p>
                   <p>Máy Tính</p>
@@ -114,7 +114,7 @@ export default function TopInstructors() {
             <div className="grid col-span-1 intructors_hover">
               <div className="intructors_content">
                 <img src={instructor4} alt="Instructor 4" />
-                <h6>Chris Andersan</h6>
+                <h6 className="pb-2 font-semibold">Chris Andersan</h6>
                 <div className="intructors_text">
                   <p>Chuyên Gia Lĩnh Vực</p>
                   <p>Full Skill</p>
@@ -133,7 +133,7 @@ export default function TopInstructors() {
             <div className="grid col-span-1 intructors_hover">
               <div className="intructors_content">
                 <img src={instructor5} alt="Instructor 5" />
-                <h6>VueLo Gadi</h6>
+                <h6 className="pb-2 font-semibold">VueLo Gadi</h6>
                 <div className="intructors_text">
                   <p>Chuyên Gia Lĩnh Vực</p>
                   <p>Phân Tích</p>
@@ -152,7 +152,7 @@ export default function TopInstructors() {
             <div className="grid col-span-1 intructors_hover">
               <div className="intructors_content">
                 <img src={instructor6} alt="Instructor 6" />
-                <h6>Hoàng Nam</h6>
+                <h6 className="pb-2 font-semibold">Hoàng Nam</h6>
                 <div className="intructors_text">
                   <p>Chuyên Gia Lĩnh Vực</p>
                   <p>PHP</p>
@@ -171,7 +171,7 @@ export default function TopInstructors() {
             <div className="grid col-span-1 intructors_hover">
               <div className="intructors_content">
                 <img src={instructor7} alt="Instructor 6" />
-                <h6>David Ngô Savani</h6>
+                <h6 className="pb-2 font-semibold">David Ngô Savani</h6>
                 <div className="intructors_text">
                   <p>Chuyên Gia Lĩnh Vực</p>
                   <p>Front End</p>

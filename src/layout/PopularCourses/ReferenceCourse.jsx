@@ -57,7 +57,6 @@ export default function ReferenceCourse() {
               } ${index === 3 ? "custom-tooltip-fourth" : ""}`}
               title={
                 <div className="custom-tooltip-content">
-                
                   <div className="sub_card">
                     <div className="subCardHead">
                       <img src={avatarCard} alt="" />
@@ -87,15 +86,24 @@ export default function ReferenceCourse() {
                         <i className="fas fa-signal iconLevel"></i>Tất cả
                       </span>
                     </div>
-                    <button className="btn_cart">Xem Chi Tiết</button>
+                    <NavLink
+                      to={`/detail/${item.maKhoaHoc}`}
+                      key={item.maKhoaHoc}
+                      className="btn_cart"
+                    >
+                      Xem Chi Tiết
+                    </NavLink>
                   </div>
-                  ;
+                  
                 </div>
               }
-              item={item} 
+              item={item}
             />
+            
           );
+          
         })}
+        
       </div>
     </div>
   );
