@@ -30,8 +30,10 @@ const HomePage = () => {
       <TeachingReview />
       {/* Footer  */}
       <Footer />
-      {/* BackToTop */} 
-      <BackToTop/>
+      {/* BackToTop */}
+      <div className="back-to-top-container">
+        <BackToTop />
+      </div>
     </div>
   );
 };

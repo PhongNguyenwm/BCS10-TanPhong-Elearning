@@ -27,7 +27,7 @@ export default function BackToTop() {
   };
 
   return (
-    <div>
+    <div className="back-to-top-container">
       {isVisible && (
         <button className="scroll-to-top-btn" onClick={scrollToTop}>
           <i class="fa-duotone fa-up-to-line"></i>

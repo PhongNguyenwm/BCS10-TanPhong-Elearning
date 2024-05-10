@@ -1,15 +1,23 @@
 .info {
-  width: 100%;
-  margin-top: 100px;
+  width: 90%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .info_content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 20px;
+  flex-wrap: wrap;
+  margin: 20px auto;
   grid-gap: 20px;
   gap: 20px;
+  justify-content: center;
 }
+
 .info_largeitem {
   background-color: #41b294;
   grid-row: 1 / span 2;
@@ -17,50 +25,122 @@
   background-position: 100% 100%;
   background-size: 50%;
   background-repeat: no-repeat;
-
 }
+
 .info_smallItemA {
   background-color: #f6ba35;
 }
+
 .info_smallItemB {
   background-color: #5c8295;
 }
+
 .info_smallItemC {
   background-color: #63c0a8;
 }
+
 .infoItemContent ul li {
-  padding: 5px 0; /* Thay đổi giá trị padding tùy ý */
+  padding: 5px 0;
 }
+
 .infoItemContent li i {
   padding-right: 10px;
 }
+
 .infoItemContent h3 {
   text-transform: uppercase;
   font-size: 1.75rem;
   padding-bottom: 5px;
 }
+
 .info_item {
   position: relative;
   overflow: hidden;
   padding: 20px;
   color: #fff;
   box-sizing: border-box;
+  border-radius: 10px;
+  max-width: 100%;
 }
 
 .info_item::before {
   content: "";
-  width: 100%; // Thay đổi giá trị này nếu cần
+  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   bottom: 0;
   left: -160%;
   display: block;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.3));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.3)
+  );
   transform: skewX(-25deg);
   transition: all 0.9s;
 }
 
 .info_item:hover:before {
   left: 125%;
+}
+
+@media (max-width: 1024px) {
+  .info_content {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .info_item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1300px) {
+  .information {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  /* Loại bỏ max-width: 90% */
+  .info {
+    max-width: none;
+  }
+
+  /* Áp dụng kích thước chiều rộng cố định cho .info_content */
+  .info_content {
+    width: 90%; /* Đặt kích thước cố định là 90% */
+    margin: 20px auto; /* Canh giữa */
+  }
+
+  /* Các quy tắc CSS khác */
+  .infoItemContent h3 {
+    font-size: 1.5rem;
+  }
+
+  .infoItemContent p {
+    font-size: 1rem;
+  }
+
+  .info_item {
+    flex-basis: auto;
+  }
+}
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .info_content {
+    grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 cột trên một hàng */
+  }
+
+ 
+  .info_smallItemA,
+  .info_smallItemB,
+  .info_smallItemC {
+    flex-basis: calc(
+      50% - 20px
+    ); /* Tính toán flex-basis để hiển thị 2 cột trên một hàng */
+  }
 }

@@ -75,7 +75,7 @@ export default function Banner() {
         </div>
         <div className="col-span-6">
           <div className="animation_content">
-            <Lottie options={defaultOptions} height={400} width={700} />
+            <Lottie options={defaultOptions} height={400} width="100%" />
           </div>
         </div>
       </div>
