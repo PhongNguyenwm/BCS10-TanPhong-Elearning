@@ -66,24 +66,13 @@ const AdminTemplate = () => {
               },
 
               {
-                key: "4",
+                key: "2",
                 icon: <UserOutlined />,
                 label: (
                   <NavLink to="/admin/quan-li-nguoi-dung">
                     Quản lý người dùng
                   </NavLink>
                 ),
-                children: [
-                  {
-                    key: "5",
-                    icon: <UserAddOutlined />,
-                    label: (
-                      <NavLink to="/admin/quan-li-nguoi-dung/them-nguoi-dung">
-                        Thêm người dùng
-                      </NavLink>
-                    ),
-                  },
-                ],
               },
             ]}
           />

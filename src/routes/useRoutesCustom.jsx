@@ -8,6 +8,11 @@ import AdminTemplate from "../template/AdminTemplate/AdminTemplate";
 import CourseManagement from "../pages/CourseManagement/CourseManagement";
 import AddCourse from "../pages/AddCourse/AddCourse";
 import EditCourse from "../pages/EditCourse/EditCourse";
+import UserManagerment from "../pages/UserManagement/UserManagement";
+import AddUser from "../pages/UserManagement/AddUser/AddUser";
+import EditUser from "../pages/UserManagement/EditUser/EditUser";
+import EnrollCourse from "../pages/EnrollCourse/EnrollCourse";
+import EnrollStudents from "../pages/UserManagement/EnrollStudents/EnrollStudents";
 const useRoutesCustom = () => {
   const routes = useRoutes([
     {
@@ -41,12 +46,32 @@ const useRoutesCustom = () => {
           index: true,
         },
         {
-          path: "them-khoa-hoc",
+          path: "quan-li-khoa-hoc/them-khoa-hoc",
           element: <AddCourse />,
         },
         {
           path: "quan-li-khoa-hoc/sua-khoa-hoc/:maKhoaHoc",
           element: <EditCourse />,
+        },
+        {
+          path: "quan-li-khoa-hoc/ghi-danh-khoa-hoc/:maKhoaHoc",
+          element: <EnrollCourse />,
+        },
+        {
+          path: "quan-li-nguoi-dung",
+          element: <UserManagerment />,
+        },
+        {
+          path: "quan-li-nguoi-dung/them-nguoi-dung",
+          element: <AddUser />,
+        },
+        {
+          path: "quan-li-nguoi-dung/sua-nguoi-dung/:taiKhoan",
+          element: <EditUser />,
+        },
+        {
+          path: "quan-li-nguoi-dung/ghi-danh-khoa-hoc/:taiKhoan",
+          element: <EnrollStudents />,
         },
       ],
     },
