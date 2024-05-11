@@ -29,7 +29,7 @@ export default function InformationDetail() {
         <div className="grid grid-cols-12">
           <div className="col-span-8">
             <h4 className="mt-14 font-bold text-2xl">
-              LẬP TRÌNH FRONT-END CHUYÊN NGHIỆP
+            {courseDetail?.tenKhoaHoc}
             </h4>
             <div className=" grid grid-cols-12 head_detail">
               <div className="col-span-4">
@@ -50,7 +50,7 @@ export default function InformationDetail() {
                     <i class="fas fa-graduation-cap"></i>
                     <div className="teacher_content">
                       <p className="teacher_p1">Lĩnh vực</p>
-                      <p>Thiết kế Web</p>
+                      <p>{courseDetail?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}</p>
                     </div>
                   </div>
                 </div>
@@ -74,22 +74,7 @@ export default function InformationDetail() {
               </div>
             </div>
             <div className="textDiscripts">
-              <p>
-                React.js là thư viện JavaScript phổ biến nhất mà bạn có thể sử
-                dụng và tìm hiểu ngày nay để xây dựng giao diện người dùng hiện
-                đại, phản ứng cho web.Khóa học này dạy bạn về React chuyên sâu,
-                từ cơ bản, từng bước đi sâu vào tất cả các kiến ​​thức cơ bản
-                cốt lõi, khám phá rất nhiều ví dụ và cũng giới thiệu cho bạn các
-                khái niệm nâng cao.Bạn sẽ nhận được tất cả lý thuyết, hàng tấn
-                ví dụ và bản trình diễn, bài tập và bài tập cũng như vô số kiến
-                ​​thức quan trọng bị hầu hết các nguồn khác bỏ qua - sau cùng,
-                có một lý do tại sao khóa học này lại rất lớn! Và trong trường
-                hợp bạn thậm chí không biết tại sao bạn lại muốn học React và
-                bạn chỉ ở đây vì một số quảng cáo hoặc "thuật toán" - đừng lo
-                lắng: ReactJS là một công nghệ quan trọng với tư cách là một nhà
-                phát triển web và trong khóa học này, tôi sẽ cũng giải thích TẠI
-                SAO điều đó lại quan trọng!
-              </p>
+              <p>{courseDetail?.moTa}</p>
               <div className="detail_learn">
                 <h6 className="text-2xl mt-5 mb-2">Những gì bạn sẽ học</h6>
                 <div className="grid grid-cols-12 detail_content">
