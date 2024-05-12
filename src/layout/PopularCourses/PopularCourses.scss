@@ -16,6 +16,7 @@
 .img_course {
   height: 185px;
   width: 100%;
+  object-fit: cover;
 }
 .course_content {
   color: #f6ba35;
@@ -82,18 +83,17 @@
 }
 .card-sale {
   position: absolute;
-    top: -360px;
-    left: -5px;
-    width: 85px;
-    height: 30px;
-    padding: 5px 8px 4px;
-    color: #fff;
-    background-color: red;
-    font-weight: 600;
-    font-size: 13px;
-    text-transform: uppercase;
+  top: -360px;
+  left: -5px;
+  width: 85px;
+  height: 30px;
+  padding: 5px 8px 4px;
+  color: #fff;
+  background-color: red;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
 }
-
 
 .card-sale {
   position: relative; /* Đặt position relative để pseudo-elements có thể được định vị dựa trên nó */
@@ -107,12 +107,12 @@
 
 .card-sale::before {
   content: "";
- left: 0px;
+  left: 0px;
   bottom: -9px;
   border-bottom: 10px solid transparent;
   border-right: 5px solid red;
-  -webkit-filter: brightness(.8);
-  filter: brightness(.8);
+  -webkit-filter: brightness(0.8);
+  filter: brightness(0.8);
 }
 
 .card-sale::after {
@@ -122,4 +122,26 @@
   border-color: red transparent;
   border-style: solid;
   border-width: 15px 12px 15px 0;
+}
+
+@media (max-width: 1200px) {
+  .col-span-3 {
+    grid-column: span 6 / span 6;
+  }
+ 
+}
+
+@media (max-width: 992px) {
+  .col-span-3 {
+    grid-column: span 2 / span 2; /* Hiển thị hai phần tử trên mỗi hàng */
+  }
+  
+ 
+  
+}
+
+@media (max-width: 768px) {
+  .col-span-3 {
+    grid-column: span 6 / span 6; /* Chỉ hiển thị một phần tử trên mỗi hàng */
+  }
 }

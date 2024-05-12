@@ -2,6 +2,7 @@ import React from "react";
 import { Tooltip } from "antd";
 
 import avartarImage from "../../assets/img/avatar2.bb9626e2.png";
+import { NavLink } from "react-router-dom";
 export default function ToolTip({
   placement,
   arrow,
@@ -10,7 +11,11 @@ export default function ToolTip({
   item,
 }) {
   return (
-    <div className="course_item grid col-span-3">
+    <NavLink
+      to={`/detail/${item.maKhoaHoc}`}
+      key={item.maKhoaHoc}
+      className="course_item grid col-span-3"
+    >
       <Tooltip
         placement={placement}
         arrow={arrow}
@@ -61,12 +66,11 @@ export default function ToolTip({
               </div>
             </div>
             <div className="card-sale">
-            <span>Yêu Thích</span>
+              <span>Yêu Thích</span>
+            </div>
           </div>
-          </div>
-          
         </div>
       </Tooltip>
-    </div>
+    </NavLink>
   );
 }

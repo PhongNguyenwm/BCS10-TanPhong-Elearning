@@ -85,62 +85,11 @@
   left: 125%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
   .info_content {
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr)); // Chỉ hiển thị một cột trên mỗi hàng
   }
-}
-
-@media (max-width: 768px) {
-  .info_item {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 1300px) {
-  .information {
-    padding: 0 20px;
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1200px) {
-  /* Loại bỏ max-width: 90% */
-  .info {
-    max-width: none;
-  }
-
-  /* Áp dụng kích thước chiều rộng cố định cho .info_content */
-  .info_content {
-    width: 90%; /* Đặt kích thước cố định là 90% */
-    margin: 20px auto; /* Canh giữa */
-  }
-
-  /* Các quy tắc CSS khác */
-  .infoItemContent h3 {
-    font-size: 1.5rem;
-  }
-
-  .infoItemContent p {
-    font-size: 1rem;
-  }
-
-  .info_item {
-    flex-basis: auto;
-  }
-}
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-  .info_content {
-    grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 cột trên một hàng */
-  }
-
- 
-  .info_smallItemA,
-  .info_smallItemB,
-  .info_smallItemC {
-    flex-basis: calc(
-      50% - 20px
-    ); /* Tính toán flex-basis để hiển thị 2 cột trên một hàng */
+  .info{
+    margin-top: 50px;
   }
 }
