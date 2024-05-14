@@ -11,7 +11,7 @@ const loadingSlice = createSlice({
   reducers: {
     handleTurnOffLoading: (state, action) => {
       state.isCount -= 1;
-      if (state.isCount == 0) {
+      if (state.isCount === 0) {
         state.isLoading = false;
       }
     },
@@ -23,20 +23,6 @@ const loadingSlice = createSlice({
     },
   },
 });
-// const loadingSlice = createSlice({
-//   name: "loadingSlice",
-//   initialState,
-//   reducers: {
-//     startLoading: (state) => {
-//       state.isLoading = !state.isLoading;
-//     },
-//     stopLoading: (state) => {
-//       state.isLoading = !state.isLoading;
-//     },
-//   },
-// });
-
-// export const { startLoading, stopLoading } = loadingSlice.actions;
 
 export const { handleTurnOffLoading, handleTurnOnLoading } =
   loadingSlice.actions;

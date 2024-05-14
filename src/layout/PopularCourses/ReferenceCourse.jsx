@@ -43,7 +43,7 @@ export default function ReferenceCourse() {
   return (
     <div className="">
       <div className="course_content">
-        <NavLink>Khóa Học Tham Khảo</NavLink>
+        <h3>Khóa Học Tham Khảo</h3>
       </div>
       <div className="grid grid-cols-12 ">
         {getCourse.slice(6, 10).map((item, index) => {
@@ -94,16 +94,12 @@ export default function ReferenceCourse() {
                       Xem Chi Tiết
                     </NavLink>
                   </div>
-                  
                 </div>
               }
               item={item}
             />
-            
           );
-          
         })}
-        
       </div>
     </div>
   );

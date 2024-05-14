@@ -5,6 +5,8 @@ import { Link, useLocation } from "react-router-dom";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 import { Pagination, Rate } from "antd";
+import Loading from "../../components/Loading/Loading";
+import useLoading from "../../hooks/useLoading";
 
 const FindCourse = () => {
   const notify = useContext(NotifyContext);
@@ -15,12 +17,15 @@ const FindCourse = () => {
   const coursesLength = courses.length;
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 3;
+  const { isLoading, turnOnLoading, turnOffLoading } = useLoading();
 
   useEffect(() => {
     const fetchCoures = async () => {
+      turnOnLoading();
       try {
         const res = await coursesManagementServ.findCourseList(coursename);
         setCourses(res.data);
+        turnOffLoading();
       } catch (err) {
         notify(err.response.data);
       }
@@ -34,6 +39,9 @@ const FindCourse = () => {
     setCurrentPage(page);
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="container">
       <Header />

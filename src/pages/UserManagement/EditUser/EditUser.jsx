@@ -25,7 +25,7 @@ const EditUser = () => {
       }
     };
     fetchUserTypes();
-  }, []);
+  });
 
   const {
     handleChange,
@@ -51,7 +51,7 @@ const EditUser = () => {
           maNhom: "GP01",
           maLoaiNguoiDung: values.maLoai === "GV" ? "GV" : "HV",
         };
-        const res = await userManagementServ.updateUser(data);
+        await userManagementServ.updateUser(data);
         notify("Sửa user thành công, trở về trang quản lí người dùng");
         setTimeout(() => {
           navigate("/admin/quan-li-nguoi-dung");
@@ -96,8 +96,8 @@ const EditUser = () => {
         }
       } catch (err) {
         notify(err.response.data);
-      }   
-    }; 
+      }
+    };
     fetchUser();
   }, [taiKhoan]);
 

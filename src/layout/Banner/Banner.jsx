@@ -70,7 +70,6 @@ export default function Banner() {
                   ))}
               </>
             </div>
-            <button className="btn_content">BẮT ĐẦU NÀO</button>
           </div>
         </div>
         <div className="col-span-6">

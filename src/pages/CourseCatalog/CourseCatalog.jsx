@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Header from "../../layout/Header/Header";
 import Footer from "../../layout/Footer/Footer";
 import { useLocation } from "react-router-dom";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import { Pagination, Rate } from "antd";
 import { getLocalStorage } from "../../utils/util";
-import { useContext } from "react";
 import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
+import Loading from "../../components/Loading/Loading";
+import useLoading from "../../hooks/useLoading";
 
 const CourseCatalog = () => {
   const location = useLocation();
@@ -18,19 +19,20 @@ const CourseCatalog = () => {
   const pageSize = 8;
   const userLocal = getLocalStorage("user");
   const notify = useContext(NotifyContext);
-
+  const { isLoading, turnOnLoading, turnOffLoading } = useLoading();
   useEffect(() => {
     const fetchCoures = async () => {
+      turnOnLoading();
       try {
         const res = await coursesManagementServ.getCoursesByCatalog(maDanhMuc);
-        console.log(res.data);
         setCourses(res.data);
+        turnOffLoading();
       } catch (err) {
         console.log(err);
       }
     };
     fetchCoures();
-  }, [maDanhMuc]);
+  }, [maDanhMuc, notify]);
 
   const startIndex = (currentPage - 1) * pageSize;
   const currentCourses = courses.slice(startIndex, startIndex + pageSize);
@@ -50,6 +52,9 @@ const CourseCatalog = () => {
     }
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <Header className="mb-5" />

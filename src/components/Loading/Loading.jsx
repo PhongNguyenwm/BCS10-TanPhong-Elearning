@@ -11,11 +11,21 @@ const Loading = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const loadingStyle = {
+    height: "100vh",
+    width: "100%",
+    backgroundColor: "#f8fafc",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    zIndex: 9999,
+    transition: "opacity 0.8s ease-in-out",
+  };
   return (
-    <div
-      className="h-screen w-full bg-slate-100 flex items-center justify-center fixed top-0 left-0"
-      style={{ zIndex: 9999 }}
-    >
+    <div style={loadingStyle}>
       <Lottie options={defaultOptions} height={400} width={400} />
     </div>
   );

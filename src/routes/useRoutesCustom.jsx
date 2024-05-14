@@ -17,6 +17,7 @@ import EnrollStudents from "../pages/UserManagement/EnrollStudents/EnrollStudent
 import CourseCatalog from "../pages/CourseCatalog/CourseCatalog";
 import FindCourse from "../pages/FindCourse/FindCourse";
 import InfomationUser from "../pages/InfomationUser/InfomationUser";
+import BuidingPage from "../layout/BuidingPage/BuidingPage";
 const useRoutesCustom = () => {
   const routes = useRoutes([
     {
@@ -50,6 +51,10 @@ const useRoutesCustom = () => {
         {
           path: "Thongtintaikhoan/:taiKhoan/:maLoaiNguoiDung",
           element: <InfomationUser />,
+        },
+        {
+          path: "TrangDangXayDung",
+          element: <BuidingPage />,
         },
       ],
     },

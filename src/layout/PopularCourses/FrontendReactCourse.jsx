@@ -39,10 +39,10 @@ export default function FrontendReactCourse() {
   return (
     <div>
       <div className="course_content">
-        <NavLink>Khóa học Front End React Js</NavLink>
+        <h3>Khóa học Front End React Js</h3>
       </div>
       <div className="grid grid-cols-12 ">
-        {getCourse.slice(6, 10).map((item, index) => {
+        {getCourse.slice(17, 21).map((item, index) => {
           return (
             <ToolTip // Sử dụng component Tooltip ở đây
               key={item.maKhoaHoc}

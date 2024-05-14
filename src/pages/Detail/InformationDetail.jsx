@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./InfomationDetail.scss";
 import instructor1 from "../../assets/img/instrutor1.jpg";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import ReferenceCourse from "../../layout/PopularCourses/ReferenceCourse";
 import Footer from "../../layout/Footer/Footer";
@@ -32,7 +32,7 @@ export default function InformationDetail() {
         maKhoaHoc: maKhoaHoc,
         taiKhoan: userLocal.taiKhoan,
       };
-      const res = await coursesManagementServ.registerCourse(enrollData);
+      await coursesManagementServ.registerCourse(enrollData);
       notify("đăng ký thành công");
     } catch (err) {
       notify(err.response.data);
@@ -45,7 +45,7 @@ export default function InformationDetail() {
         <div className="grid grid-cols-12">
           <div className="col-span-8">
             <h4 className="mt-14 font-bold text-2xl">
-            {courseDetail?.tenKhoaHoc}
+              {courseDetail?.tenKhoaHoc}
             </h4>
             <div className=" grid grid-cols-12 head_detail">
               <div className="col-span-4">
@@ -172,7 +172,7 @@ export default function InformationDetail() {
                       <div className="section_course">
                         <span>Mục 1: Giới thiệu</span>
                         <button className="btnGlobal btnReview">
-                          Xem Trước
+                          <NavLink to={"/TrangDangXayDung"}>Xem Trước</NavLink>
                         </button>
                       </div>
                     </div>
@@ -230,7 +230,7 @@ export default function InformationDetail() {
                       <div className="section_course">
                         <span>MỤC 2: KIẾN THỨC CĂN BẢN</span>
                         <button className="btnGlobal btnReview">
-                          Xem Trước
+                          <NavLink to={"/TrangDangXayDung"}>Xem Trước</NavLink>
                         </button>
                       </div>
                     </div>
@@ -298,7 +298,7 @@ export default function InformationDetail() {
                       <div className="section_course">
                         <span>MỤC 3: KIẾN THỨC CHUYÊN SÂU</span>
                         <button className="btnGlobal btnReview">
-                          Xem Trước
+                          <NavLink to={"/TrangDangXayDung"}>Xem Trước</NavLink>
                         </button>
                       </div>
                     </div>

@@ -4,7 +4,6 @@ const userLocal = getLocalStorage("user");
 
 export const coursesManagementServ = {
   getCourseListDetail: (maKhoaHoc) => {
-    console.log("🚀 ~ maKhoaHoc:", maKhoaHoc);
     return http.get(`/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${maKhoaHoc}`);
   },
   getCoureCatalogs: () => {

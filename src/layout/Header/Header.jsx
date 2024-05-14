@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "./../../assets/img/logo.png";
 import avatar from "./../../assets/img/avatar.png";
 import { NavLink, Link } from "react-router-dom";
@@ -6,12 +6,14 @@ import styles from "./../Header/header.scss";
 import { Button, Dropdown, Menu, Input } from "antd";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import { getLocalStorage } from "../../utils/util";
+import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 
 const Header = () => {
+  const notify = useContext(NotifyContext);
   const [categories, setCategories] = useState([]);
   const [position, setPosition] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
-  const [searchValue, setSearchValue] = useState();
+  const [searchValue, setSearchValue] = useState("");
   const { Search } = Input;
 
   useEffect(() => {
@@ -71,6 +73,8 @@ const Header = () => {
     if (searchValue.trim() !== "") {
       const searchPath = `/TimKiemKhoaHoc?tenKhoaHoc=${searchValue}`;
       window.location.href = searchPath;
+    } else {
+      notify("Vui lòng nhập từ khoá tìm kiếm");
     }
   };
   return (
