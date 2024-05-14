@@ -31,7 +31,7 @@ const SignIn = () => {
             navigate("/");
           }, 1000);
         } catch (error) {
-          notify(error.response.data.content);
+          notify(error.response.data);
         }
       },
       validationSchema: Yup.object({

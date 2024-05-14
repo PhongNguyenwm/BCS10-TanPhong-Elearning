@@ -15,7 +15,6 @@ export default function PopularCourses() {
     coursesManagementServ
       .getCourseList()
       .then((res) => {
-        console.log(res);
         setGetCourse(res.data);
       })
       .catch((err) => {

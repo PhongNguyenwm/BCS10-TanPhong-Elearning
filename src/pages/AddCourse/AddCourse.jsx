@@ -63,7 +63,6 @@ const AddCourse = () => {
         values.luotXem = parseInt(values.luotXem);
         values.biDanh = values.tenKhoaHoc.toLowerCase().replace(/\s+/g, "-");
         let formData = new FormData();
-        // sử dụng for in để duyệt object qua từng key và lấy dữ liệu truyền vào formdata
         for (let key in values) {
           if (key == "hinhAnh") {
             formData.append("File", values[key]);
@@ -71,7 +70,7 @@ const AddCourse = () => {
             formData.append(key, values[key]);
           }
         }
-        console.log(formData);
+
         const res = await coursesManagementServ.addCourse(formData);
         notify(
           "thêm khoá học thành công! chuyển hướng về trang quản lý khoá học"
@@ -80,7 +79,6 @@ const AddCourse = () => {
         setTimeout(() => {
           navigate("/admin/quan-li-khoa-hoc");
         }, 1000);
-        console.log(res);
       } catch (error) {
         console.log(error);
         notify(error.response.data);
@@ -259,7 +257,6 @@ const AddCourse = () => {
                   setFieldValue("danhGia", value);
                 }}
                 value={values.danhGia}
-                // allowHalf
               />
             </div>
           </div>

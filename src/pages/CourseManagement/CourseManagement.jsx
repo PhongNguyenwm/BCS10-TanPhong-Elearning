@@ -20,19 +20,15 @@ const CourseManagement = () => {
     const fetchCourses = async () => {
       try {
         const res = await coursesManagementServ.getCourseList();
-
-        // Chuyển ngày tạo thành đối tượng moment và lưu vào mảng mới
         const coursesWithDate = res.data.map((course) => ({
           ...course,
           momentDate: moment(course.ngayTao, "DD-MM-YYYY"),
         }));
 
-        // Sắp xếp mảng mới theo ngày tạo mới nhất đến cũ nhất
         const sortedCourses = coursesWithDate.sort((a, b) => {
           return b.momentDate.diff(a.momentDate, "days");
         });
 
-        // Xóa trường momentDate ra khỏi mỗi đối tượng trong mảng đã sắp xếp
         const sortedCoursesWithoutMomentDate = sortedCourses.map((course) => {
           const { momentDate, ...rest } = course;
           return rest;
@@ -46,10 +42,6 @@ const CourseManagement = () => {
     };
     fetchCourses();
   }, [notify, deleteCourse, pagination]);
-
-  // useEffect(() => {
-  //   setArrMovie(initialArrMovie);
-  // }, [initialArrMovie]);
 
   const handleDeleteCourse = async (maKhoaHoc) => {
     if (window.confirm("Bạn có chắc muốn xoá khoá học này?")) {
@@ -92,7 +84,6 @@ const CourseManagement = () => {
       dataIndex: "ngayTao",
       width: "5%",
       align: "center",
-      // sorter: (a, b) => new Date(b.ngayTao) - new Date(a.ngayTao),
     },
     {
       title: "Mã khoá học",
@@ -118,7 +109,6 @@ const CourseManagement = () => {
               }}
               onError={(e) => {
                 e.target.onError = null;
-                // e.target.src = `https://picsum.photos/id/${course}/50/50`;
               }}
             />
           </>
@@ -147,22 +137,31 @@ const CourseManagement = () => {
             <div className="text-center">
               <NavLink
                 key={1}
+                className="mr-5 text-base font-sans "
+                to={`/admin/quan-li-khoa-hoc/ghi-danh-khoa-hoc/${course.maKhoaHoc}`}
+              >
+                <button className="font-sans text-base text-blue-400 hover:text-blue-500 mr-1">
+                  Ghi danh
+                </button>
+              </NavLink>
+              <NavLink
+                key={2}
                 className="mr-5 text-xl"
                 to={`/admin/quan-li-khoa-hoc/sua-khoa-hoc/${course.maKhoaHoc}`}
               >
-                <button className="text-blue-400 hover:text-blue-500 font-sans text-base">
-                  Sửa
+                <button className="text-orange-400 hover:text-orange-500 font-sans text-base">
+                  {/* Sửa */}
                   <i className="fa-thin fa-pen-to-square ml-1 text-lg font-bold"></i>
                 </button>
               </NavLink>
               <span
                 style={{ cursor: "pointer" }}
-                key={2}
+                key={3}
                 className="text-2xl mr-5"
                 onClick={() => handleDeleteCourse(course.maKhoaHoc)}
               >
                 <button className="text-red-400 hover:text-red-500 font-sans text-base">
-                  Xoá
+                  {/* Xoá */}
                   <i className="fa-thin fa-trash ml-1 text-lg font-bold"></i>
                 </button>
               </span>
@@ -176,16 +175,14 @@ const CourseManagement = () => {
     },
   ];
   const data = arrCourse;
-  const onChange = (pagination, filters, sorter, extra) => {
-    // setPagination(pagination);
-  };
+  const onChange = (pagination, filters, sorter, extra) => {};
 
   return (
     <div>
-      <h3 className="text-4xl ">Quản lý khoá học</h3>
+      <h3 className="text-4xl mb-5 ">Quản lý khoá học</h3>
       <div className="flex flex-wrap justify-between items-center">
         <Search
-          className="mt-5 custom-search-input w-1/2"
+          className="custom-search-input w-1/2"
           placeholder="Tìm kiếm khoá học"
           allowClear
           size="large"
@@ -194,7 +191,7 @@ const CourseManagement = () => {
         />
         <NavLink
           className="items-center font-sans text-base text-black border-spacing-1 border px-4 py-3 rounded bg-yellow-300 hover:bg-yellow-400 hover:text-black"
-          to="/admin/them-khoa-hoc"
+          to="/admin/quan-li-khoa-hoc/them-khoa-hoc"
         >
           Thêm khoá học
           <BookOutlined className="ml-2" />
@@ -205,7 +202,6 @@ const CourseManagement = () => {
         className="text-center"
         columns={columns}
         dataSource={data}
-        // pagination={pagination}
         onChange={onChange}
         rowKey={(record) => record.maKhoaHoc}
       />
