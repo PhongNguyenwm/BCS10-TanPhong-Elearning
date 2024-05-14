@@ -41,7 +41,7 @@ export default function FrontendReactCourse() {
       <div className="course_content">
         <NavLink>Khóa học Front End React Js</NavLink>
       </div>
-      <div className="grid grid-cols-12 container">
+      <div className="grid grid-cols-12 ">
         {getCourse.slice(6, 10).map((item, index) => {
           return (
             <ToolTip // Sử dụng component Tooltip ở đây

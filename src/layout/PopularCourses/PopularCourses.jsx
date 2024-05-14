@@ -6,8 +6,9 @@ import { coursesManagementServ } from "../../services/coursesManagement";
 import avartarImage from "../../assets/img/avatar2.bb9626e2.png";
 import ReferenceCourse from "./ReferenceCourse";
 import FrontendReactCourse from "./FrontendReactCourse";
+
 export default function PopularCourses() {
-  const [getCourse, setGetCoure] = useState([]);
+  const [getCourse, setGetCourse] = useState([]);
   const { Meta } = Card;
 
   useEffect(() => {
@@ -26,16 +27,22 @@ export default function PopularCourses() {
       <div className="course_content">
         <NavLink>Khóa Học Phổ Biến</NavLink>
       </div>
-      <div className=" grid grid-cols-12 container mb-5">
+      <div className="grid grid-cols-12 gap-4 mb-5">
         {getCourse.slice(3, 7).map((item, index) => (
           <NavLink
             to={`/detail/${item.maKhoaHoc}`}
             key={item.maKhoaHoc}
-            className=" course_item grid col-span-3 "
+            className="course_item col-span-3 sm:col-span-6 md:col-span-6 lg:col-span-3"
           >
-            <div className="cart">
-              <img className="img_course" src={item.hinhAnh} />
-              <p className="name_course ">{item.tenKhoaHoc}</p>
+            <div className="cart_header">
+              <div></div>
+              <img
+                className="img_course"
+                src={item.hinhAnh}
+                alt={item.tenKhoaHoc}
+              />
+
+              <p className="name_course">{item.tenKhoaHoc}</p>
               <p className="line-clamp-1 mt-5 px-5 mb-2 font-medium">
                 {item.moTa}
               </p>
