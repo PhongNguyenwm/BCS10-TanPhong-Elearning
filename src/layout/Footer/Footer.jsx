@@ -4,7 +4,7 @@ import BuidingPage from "../BuidingPage/BuidingPage";
 import { Link } from "react-router-dom";
 export default function Footer() {
   return (
-    <div className="footer">
+    <div className="footer container-fluid">
       <div className="footer_body">
         <div>
           <div className="grid grid-cols-12">
@@ -13,7 +13,7 @@ export default function Footer() {
                 <span className="textE text-4xl ">E</span> learning
                 <i className="far fa-keyboard iconLogo"></i>
               </a>
-              <ul className="menu_footer">
+              <ul className="menu_footer menu2">
                 <li>
                   <i className="fas fa-phone-alt iconFooter" />
 
@@ -31,7 +31,7 @@ export default function Footer() {
             </div>
             <div className="col-span-3">
               <h3 className="text_footerTitle font-bold mb-3">Liên Kết</h3>
-              <ul className="menu_footer">
+              <ul className="menu_footer menu1">
                 <li>
                   <a href="/">
                     <i className="fas fa-chevron-right mb-2" /> Trang chủ
@@ -56,7 +56,7 @@ export default function Footer() {
             </div>
             <div className="col-span-3">
               <h3 className="text_footerTitle footerTitle_1 font-bold mb-3">Khóa Học</h3>
-              <ul className="menu_footer">
+              <ul className="menu_footer menu3">
                 <li>
                   <a href="/DanhMucKhoaHoc?MaDanhMuc=FrontEnd&categoryName=Lập%20trình%20Front%20end&MaNhom=GP01">
                     <i className="fas fa-chevron-right" /> Front End
