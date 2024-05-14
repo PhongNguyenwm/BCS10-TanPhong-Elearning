@@ -5,27 +5,13 @@ import Lottie from "react-lottie";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { userManagementServ } from "../../../services/userManagement";
-import { NotifyContext } from "../../../template/AdminTemplate/AdminTemplate";
+import { NotifyContext } from "../../../template/UserTemplate/UserTemplate";
 import { useNavigate, useParams } from "react-router-dom";
-import { Form, Select } from "antd";
 
-const EditUser = () => {
+const EditUserHomePage = () => {
   const notify = useContext(NotifyContext);
   const navigate = useNavigate();
-  const [userTypes, setUserTypes] = useState([]);
   const { taiKhoan } = useParams();
-  const [showUserTypeInput, setShowUserTypeInput] = useState(true);
-  useEffect(() => {
-    const fetchUserTypes = async () => {
-      try {
-        const res = await userManagementServ.getUserTypes();
-        setUserTypes(res.data);
-      } catch (err) {
-        notify(err.data);
-      }
-    };
-    fetchUserTypes();
-  }, []);
 
   const {
     handleChange,
@@ -41,7 +27,7 @@ const EditUser = () => {
       matKhau: "",
       hoTen: "",
       soDt: "",
-      maLoai: "",
+      maLoaiNguoiDung: "",
       email: "",
     },
     onSubmit: async (values) => {
@@ -49,16 +35,14 @@ const EditUser = () => {
         const data = {
           ...values,
           maNhom: "GP01",
-          maLoaiNguoiDung: values.maLoai === "GV" ? "GV" : "HV",
         };
         const res = await userManagementServ.updateUser(data);
-        notify("Sửa user thành công, trở về trang quản lí người dùng");
+        notify("Cập nhật thông tin thành công! Vui lòng đăng nhập lại");
         setTimeout(() => {
-          navigate("/admin/quan-li-nguoi-dung");
+          navigate("/");
         }, 1000);
       } catch (error) {
-        console.log(error);
-        notify(error);
+        notify("Cập nhật thông tin thất bại, vui lòng thử lại sau");
         setTimeout(() => {}, 1000);
       }
     },
@@ -77,7 +61,7 @@ const EditUser = () => {
           "Vui lòng nhập đúng số điện thoại"
         )
         .required("Vui lòng nhập số điện thoại"),
-      maLoai: Yup.string().required("Vui lòng lựa chọn giá trị"),
+      //   maLoai: Yup.string().required("Vui lòng lựa chọn giá trị"),
     }),
   });
   useEffect(() => {
@@ -91,11 +75,10 @@ const EditUser = () => {
           setFieldValue("hoTen", userData.hoTen);
           setFieldValue("soDt", userData.soDt);
           setFieldValue("email", userData.email);
-          setFieldValue("maLoai", userData.maLoaiNguoiDung);
-          setShowUserTypeInput(userData.maLoaiNguoiDung === "GV");
+          setFieldValue("maLoaiNguoiDung", userData.maLoaiNguoiDung);
         }
       } catch (err) {
-        notifyError(err.response.data);
+        notify(err.response.data);
       }
     };
     fetchUser();
@@ -112,7 +95,7 @@ const EditUser = () => {
 
   return (
     <div className="container ">
-      <h3 className=" text-black text-3xl">Chỉnh sửa thông tin người dùng</h3>
+      <h3 className=" text-black text-3xl">Chỉnh sửa thông tin cá nhân</h3>
       <div className="h-screen flex">
         <div className="animation_signIn w-7/12 flex items-center justify-center">
           <Lottie options={defaultOptions} height={400} width={400} />
@@ -121,7 +104,7 @@ const EditUser = () => {
           <div className="w-full p-10 border border-gray-400 rounded-md space-y-5">
             <form onSubmit={handleSubmit} className="space-y-5">
               <InputCustom
-                placeholder="Tài khoản "
+                placeholder="Tài khoản"
                 id="taiKhoan"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -133,7 +116,7 @@ const EditUser = () => {
                 label={"Tài khoản"}
               />
               <InputCustom
-                placeholder="Mật khẩu "
+                placeholder="Mật khẩu"
                 id="matKhau"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -144,7 +127,7 @@ const EditUser = () => {
                 label={"Mật khẩu"}
               />
               <InputCustom
-                placeholder="Họ tên "
+                placeholder="Họ tên"
                 id="hoTen"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -155,7 +138,7 @@ const EditUser = () => {
                 label={"Họ tên"}
               />
               <InputCustom
-                placeholder="Email "
+                placeholder="Email"
                 id="email"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -168,7 +151,7 @@ const EditUser = () => {
               />
 
               <InputCustom
-                placeholder="Số điện thoại "
+                placeholder="Số điện thoại"
                 id="soDt"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -178,42 +161,19 @@ const EditUser = () => {
                 value={values.soDt}
                 label={"Số điện thoại"}
               />
-              {showUserTypeInput && (
-                <Form.Item label="Chọn loại người dùng">
-                  <Select
-                    id="maLoai"
-                    name="maLoai"
-                    onChange={(value) => {
-                      setFieldValue("maLoai", value);
-                      console.log("giá trị của mã loại", value);
-                    }}
-                    onBlur={handleBlur}
-                    value={values.maLoai}
-                    style={{
-                      color:
-                        userTypes.tenLoaiNguoiDung == "Giáo vụ"
-                          ? "red"
-                          : "green",
-                    }}
-                  >
-                    {userTypes.map((userType) => (
-                      <Select.Option
-                        style={{
-                          color:
-                            userType.maLoaiNguoiDung == "GV" ? "red" : "green",
-                        }}
-                        key={userType.maLoaiNguoiDung}
-                        value={userType.maLoaiNguoiDung}
-                      >
-                        {userType.tenLoaiNguoiDung}
-                      </Select.Option>
-                    ))}
-                  </Select>
-                  {errors.maLoai && touched.maLoai ? (
-                    <p className="text-red-500 text-sm">{errors.maLoai}</p>
-                  ) : null}
-                </Form.Item>
-              )}
+              <InputCustom
+                placeholder="Mã người dùng"
+                id="maLoaiNguoiDung"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={errors.maLoaiNguoiDung}
+                touched={touched.maLoaiNguoiDung}
+                name="maLoaiNguoiDung"
+                value={values.maLoaiNguoiDung}
+                label={"Mã người dùng"}
+                readOnly={true}
+              />
+
               <div>
                 <button
                   type="submit"
@@ -230,4 +190,4 @@ const EditUser = () => {
   );
 };
 
-export default EditUser;
+export default EditUserHomePage;

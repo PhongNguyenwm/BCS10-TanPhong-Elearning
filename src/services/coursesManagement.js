@@ -36,8 +36,6 @@ export const coursesManagementServ = {
   getUserUnEnroll: (course) => {
     const courseCode = course.maKhoaHoc;
     const requestData = { maKhoaHoc: courseCode };
-    // const jsonString = JSON.stringify(requestData);
-    // const cleanJsonString = jsonString.replace(/\\/g, "");
 
     return http.post(
       `/QuanLyNguoiDung/LayDanhSachNguoiDungChuaGhiDanh `,
@@ -79,5 +77,22 @@ export const coursesManagementServ = {
         Authorization: `Bearer ${userLocal.accessToken}`,
       },
     });
+  },
+  getCoursesByCatalog: (categoryCode) => {
+    return http.get(
+      `/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${categoryCode}&MaNhom=GP01`
+    );
+  },
+  registerCourse: (data) => {
+    return http.post("/QuanLyKhoaHoc/DangKyKhoaHoc", data, {
+      headers: {
+        Authorization: `Bearer ${userLocal.accessToken}`,
+      },
+    });
+  },
+  findCourseList: (data) => {
+    return http.get(
+      `QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${data}&MaNhom=GP01`
+    );
   },
 };

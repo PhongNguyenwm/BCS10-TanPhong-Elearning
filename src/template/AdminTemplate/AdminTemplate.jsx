@@ -21,10 +21,7 @@ export const NotifyContext = React.createContext(null);
 const AdminTemplate = () => {
   const userLocal = getLocalStorage("user");
   useEffect(() => {
-    // thực hiện lấy dữ liệu từ local lên để kiểm tra
-    // Hello Thành
     const user = getLocalStorage("user");
-    // console.log(user);
     if (!user) {
       window.location.href = "https://google.com";
     }
@@ -37,8 +34,6 @@ const AdminTemplate = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-
-  // Quản lí người dùng, quản lí phim, quản lí lịch chiếu
 
   const renderNotify = (notify) => {
     return toast(notify);

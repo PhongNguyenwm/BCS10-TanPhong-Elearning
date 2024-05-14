@@ -14,7 +14,6 @@ export default function PopularCourses() {
     coursesManagementServ
       .getCourseList()
       .then((res) => {
-        console.log(res);
         setGetCoure(res.data);
       })
       .catch((err) => {
@@ -30,7 +29,8 @@ export default function PopularCourses() {
       <div className=" grid grid-cols-12 container mb-5">
         {getCourse.slice(3, 7).map((item, index) => (
           <NavLink
-            to={`/detail/${item.maKhoaHoc}`} key={item.maKhoaHoc}
+            to={`/detail/${item.maKhoaHoc}`}
+            key={item.maKhoaHoc}
             className=" course_item grid col-span-3 "
           >
             <div className="cart">

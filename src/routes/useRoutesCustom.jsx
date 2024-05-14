@@ -14,6 +14,9 @@ import AddUser from "../pages/UserManagement/AddUser/AddUser";
 import EditUser from "../pages/UserManagement/EditUser/EditUser";
 import EnrollCourse from "../pages/EnrollCourse/EnrollCourse";
 import EnrollStudents from "../pages/UserManagement/EnrollStudents/EnrollStudents";
+import CourseCatalog from "../pages/CourseCatalog/CourseCatalog";
+import FindCourse from "../pages/FindCourse/FindCourse";
+import InfomationUser from "../pages/InfomationUser/InfomationUser";
 const useRoutesCustom = () => {
   const routes = useRoutes([
     {
@@ -35,6 +38,18 @@ const useRoutesCustom = () => {
         {
           path: "detail/:maKhoaHoc",
           element: <Detail />,
+        },
+        {
+          path: "DanhMucKhoaHoc",
+          element: <CourseCatalog />,
+        },
+        {
+          path: "TimKiemKhoaHoc",
+          element: <FindCourse />,
+        },
+        {
+          path: "Thongtintaikhoan/:taiKhoan/:maLoaiNguoiDung",
+          element: <InfomationUser />,
         },
       ],
     },

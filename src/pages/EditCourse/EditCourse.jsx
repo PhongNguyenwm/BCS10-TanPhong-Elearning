@@ -115,7 +115,8 @@ const EditCourse = () => {
           navigate("/admin/quan-li-khoa-hoc");
         }, 1000);
       } catch (error) {
-        notify(error);
+        console.log(error);
+        notify(error.response.data);
       }
     },
     validationSchema: Yup.object({
@@ -182,6 +183,7 @@ const EditCourse = () => {
                 touched={touched.maKhoaHoc}
                 label="Mã khoá học"
                 placeholder="Nhập mã khoá học"
+                readOnly={true}
               />
             </div>
             <div className="w-3/4 mb-5 ">

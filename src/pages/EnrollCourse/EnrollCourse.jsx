@@ -105,7 +105,6 @@ const EnrollCourse = ({ match }) => {
         if (courseCategoriesMatch) {
           const courseCode = courseCategoriesMatch[1];
           const res = await coursesManagementServ.getInfoCourse(courseCode);
-          console.log(res.data);
           setCourse(res.data);
           fetchUserUnEnroll(res.data);
         }

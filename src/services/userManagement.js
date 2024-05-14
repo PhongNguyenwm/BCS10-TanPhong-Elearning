@@ -70,4 +70,11 @@ export const userManagementServ = {
       },
     });
   },
+  getUserEnrolledCourses: (data) => {
+    return http.post(`/QuanLyNguoiDung/ThongTinTaiKhoan`, data, {
+      headers: {
+        Authorization: `Bearer ${userLocal.accessToken}`,
+      },
+    });
+  },
 };
