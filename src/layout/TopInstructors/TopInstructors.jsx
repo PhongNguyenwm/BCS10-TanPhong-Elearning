@@ -50,10 +50,10 @@ export default function TopInstructors() {
     <div className="">
       <div className="TopInstructors mt-10 ">
         <h6 className="instructors_header font-semibold ml-5 mb-10">
-          <NavLink>Giảng Viên Hàng Đầu</NavLink>
+          <h3>Giảng Viên Hàng Đầu</h3>
         </h6>
         <div className="slider-wrapper">
-          <Slider  {...settings}>
+          <Slider {...settings}>
             <div className="grid col-span-1 intructors_hover center-item ">
               <div className="intructors_content">
                 <img src={instructor2} alt="Instructor 2" />

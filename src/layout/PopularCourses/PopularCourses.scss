@@ -21,6 +21,7 @@
 .course_content {
   color: #f6ba35;
   font-weight: 600;
+  font-size: 20px;
 }
 .course_item {
   position: relative;
@@ -128,16 +129,12 @@
   .col-span-3 {
     grid-column: span 6 / span 6;
   }
- 
 }
 
 @media (max-width: 992px) {
   .col-span-3 {
     grid-column: span 2 / span 2; /* Hiển thị hai phần tử trên mỗi hàng */
   }
-  
- 
-  
 }
 
 @media (max-width: 768px) {

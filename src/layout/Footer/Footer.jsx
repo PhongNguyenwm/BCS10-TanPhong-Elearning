@@ -1,5 +1,7 @@
 import React from "react";
 import "./Footer.scss";
+import BuidingPage from "../BuidingPage/BuidingPage";
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <div className="footer">
@@ -31,16 +33,24 @@ export default function Footer() {
               <h3 className="text_footerTitle font-bold mb-3">Liên Kết</h3>
               <ul className="menu_footer">
                 <li>
-                  <i className="fas fa-chevron-right mb-2" /> Trang chủ
+                  <a href="/">
+                    <i className="fas fa-chevron-right mb-2" /> Trang chủ
+                  </a>
                 </li>
                 <li>
-                  <i className="fas fa-chevron-right mb-2" /> Dịch vụ
+                  <Link to="/TrangDangXayDung">
+                    <i className="fas fa-chevron-right mb-2" /> Dịch vụ
+                  </Link>
                 </li>
                 <li>
-                  <i className="fas fa-chevron-right mb-2" /> Nhóm
+                  <Link to="/TrangDangXayDung">
+                    <i className="fas fa-chevron-right mb-2" /> Nhóm
+                  </Link>
                 </li>
                 <li>
-                  <i className="fas fa-chevron-right mb-2" /> Blog
+                  <Link to="/TrangDangXayDung">
+                    <i className="fas fa-chevron-right mb-2" /> Blog
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -48,16 +58,24 @@ export default function Footer() {
               <h3 className="text_footerTitle font-bold mb-3">Khóa Học</h3>
               <ul className="menu_footer">
                 <li>
-                  <i className="fas fa-chevron-right" /> Front End
+                  <a href="/DanhMucKhoaHoc?MaDanhMuc=FrontEnd&categoryName=Lập%20trình%20Front%20end&MaNhom=GP01">
+                    <i className="fas fa-chevron-right" /> Front End
+                  </a>
                 </li>
                 <li>
-                  <i className="fas fa-chevron-right" /> Back End
+                  <a href="/DanhMucKhoaHoc?MaDanhMuc=BackEnd&categoryName=Lập%20trình%20Backend&MaNhom=GP01">
+                    <i className="fas fa-chevron-right" /> Back End
+                  </a>
                 </li>
                 <li>
-                  <i className="fas fa-chevron-right" /> Full stack
+                  <a href="/DanhMucKhoaHoc?MaDanhMuc=FullStack&categoryName=Lập%20trình%20Full%20Stack&MaNhom=GP01">
+                    <i className="fas fa-chevron-right" /> Full stack
+                  </a>
                 </li>
                 <li>
-                  <i className="fas fa-chevron-right" /> Node Js
+                  <a href="/DanhMucKhoaHoc?MaDanhMuc=DiDong&categoryName=Lập%20trình%20di%20động&MaNhom=GP01">
+                    <i className="fas fa-chevron-right" /> Di Động
+                  </a>
                 </li>
               </ul>
             </div>

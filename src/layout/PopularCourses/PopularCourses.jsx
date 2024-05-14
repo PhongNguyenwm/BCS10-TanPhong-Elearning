@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "antd";
 import { NavLink } from "react-router-dom";
 import "./PopularCourses.scss";
 import { coursesManagementServ } from "../../services/coursesManagement";
@@ -9,7 +8,6 @@ import FrontendReactCourse from "./FrontendReactCourse";
 
 export default function PopularCourses() {
   const [getCourse, setGetCourse] = useState([]);
-  const { Meta } = Card;
 
   useEffect(() => {
     coursesManagementServ
@@ -25,9 +23,9 @@ export default function PopularCourses() {
   return (
     <div className="course">
       <div className="course_content">
-        <NavLink>Khóa Học Phổ Biến</NavLink>
+        <h3>Khóa Học Phổ Biến</h3>
       </div>
-      <div className="grid grid-cols-12 gap-4 mb-5">
+      <div className="grid grid-cols-12 gap-4 mb-10">
         {getCourse.slice(3, 7).map((item, index) => (
           <NavLink
             to={`/detail/${item.maKhoaHoc}`}
@@ -81,7 +79,7 @@ export default function PopularCourses() {
         ))}
       </div>
       <ReferenceCourse />
-      <div className="mt-5">
+      <div className="mt-10">
         <FrontendReactCourse />
       </div>
     </div>

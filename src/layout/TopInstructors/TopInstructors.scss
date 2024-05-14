@@ -1,5 +1,7 @@
 .instructors_header {
   color: #f6ba35;
+  font-size: 20px;
+  font-weight: 600;
 }
 .intructors_item {
   display: grid;
@@ -54,7 +56,7 @@
   }
 }
 .slick-slide {
-  width: 200px !important; 
+  width: 200px !important;
   margin-left: 31px;
 }
 
@@ -65,7 +67,7 @@
 .slick-prev,
 .slick-next {
   color: green;
-  z-index: 9999; 
+  z-index: 9999;
 }
 
 .slick-prev:hover,

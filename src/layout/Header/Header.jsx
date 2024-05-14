@@ -3,7 +3,7 @@ import logo from "./../../assets/img/logo.png";
 import avatar from "./../../assets/img/avatar.png";
 import { NavLink, Link } from "react-router-dom";
 import styles from "./../Header/header.scss";
-import { Button, Dropdown, Menu, Input, message } from "antd";
+import { Button, Dropdown, Menu, Input } from "antd";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import { getLocalStorage } from "../../utils/util";
 import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
