@@ -57,16 +57,99 @@
   justify-content: space-between;
   padding: 5px 20px;
   border-top: 1px solid #d0d0d0;
-  
+
   box-sizing: border-box; /* Đảm bảo border tính vào kích thước của phần tử */
 }
-.iconSize{
+.iconSize {
   width: 30px;
   height: 30px;
   line-height: 30px;
   margin: 0 5px;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
 }
 .divGlobal i:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Thêm box shadow khi hover vào */
+}
+.formFooter {
+  margin: 3px 0;
+  outline: none;
+  border: none;
+  width: 300px;
+  max-width: 100%;
+  height: 40px;
+  border: 2px solid #41b294;
+  border-radius: 8px;
+  padding-left: 10px;
+  background-color: #f5f5f5;
+}
+.btnGlobal {
+  background-color: #f6ba35;
+  border: none;
+  transition: all 0.5s;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 5px 10px;
+  color: #fff;
+}
+@media (max-width: 992px) {
+  .footer_body {
+    .grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    .col-span-3 {
+      grid-column: span 2;
+    }
+    
+    .extra_footer {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}
+@media (max-width: 1200px) and (min-width: 993px) {
+  .footer_body {
+    
+
+    .col-span-3 {
+      grid-column: span 3;
+    }
+
+    .extra_footer {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .footer_body {
+   
+
+    .col-span-3 {
+      grid-column: span 3;
+    }
+
+    .extra_footer {
+      flex-direction: column;
+      text-align: center;
+      .divGlobal {
+        justify-content: center;
+      }
+    }
+   
+  }
+  .footerTitle {
+ padding-top: 20px;
+  }
+  .formFooter{
+    width: 1000px;
+  }
+  .iconFooter{
+   margin-left: 0px;
+  }
+ .footerTitle_1{
+ padding-top: 20px;
+ }
 }

@@ -23,7 +23,7 @@
 }
 .reviewStudent .smallboxLeftTop {
   top: 0;
-  left: 0;
+  left: 120px;
   height: 70px;
   width: 10%;
 }
@@ -59,17 +59,14 @@
   width: 80px;
   background-image: radial-gradient(#41b294 10%, transparent 11%);
 }
-.smallboxRightTop {
-  width: 80px;
-  background-image: radial-gradient(#41b294 10%, transparent 11%);
-}
+
 .smallboxLeftBottom {
-    bottom: 0;
-    left: 30%;
-    width: 80px;
-    height: 80px; 
-    border-radius: 50%; 
-  }
+  bottom: 0;
+  left: 30%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
 .bg_image img {
   width: 200px;
   height: 200px;
@@ -103,7 +100,6 @@
   }
   span {
     color: #8c8c8c;
-  
   }
 }
 .textQoute {
@@ -118,4 +114,78 @@
   font-size: 50px;
   color: #ed85ab;
   font-family: fantasy;
+}
+
+@media (max-width: 992px) {
+  .teaching_content {
+    grid-column: span 12 / span 12;
+  }
+  .bg_image {
+    top: -100px;
+  }
+  .text_review {
+    margin-top: 130px;
+  }
+  .review {
+    margin-top: 120px;
+  }
+  .smallboxLeftTop {
+    top: -70px;
+    left: 18%;
+  }
+  .triangleTopRight {
+    top: -71px;
+    left: 18%;
+  }
+  .smallboxRightTop {
+    top: -70px;
+    right: 10%;
+    height: 50px;
+  }
+  .smallboxLeftBottom {
+    top: 110px;
+    left: 65%;
+  }
+}
+@media (max-width: 568px) {
+  .smallboxLeftTop {
+    top: -70px;
+    left: 8%;
+  }
+  .triangleTopRight {
+    top: -71px;
+    left: 8%;
+  }
+  .smallBox {
+    width: 15%;
+  }
+  .smallboxLeftBottom {
+    top: 110px;
+    left: 74%;
+    width: 60px;
+    height: 60px;
+  }
+  .textQoute{
+    font-size: 15px ;
+    
+  }
+  p{
+    text-align: center;
+  }
+  .studentGood {
+    text-align: center; 
+  }
+}
+@media (max-width: 1200px) and (min-width: 992px) {
+  .smallboxLeftTop {
+    top: -25px;
+    left: 2%;
+  }
+  .triangleTopRight {
+    top: -25px;
+    left: 2%;
+  }
+  .review_student{
+    padding: 30px 0;
+  }
 }
