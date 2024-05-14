@@ -16,6 +16,7 @@
     bottom: 190px;
     width: 150px;
     height: auto;
+   
   }
 }
 
@@ -30,5 +31,12 @@
   }
   .banner_content{
     margin-bottom: 30px;
+  }
+ 
+}
+@media (max-width: 484px) {
+  .img_item {
+  
+   padding-right: 30px;
   }
 }

@@ -50,7 +50,9 @@ export default function FrontendReactCourse() {
               arrow={mergedArrow}
               overlayClassName={`custom-tooltip ${
                 index === 1 ? "custom-tooltip-second" : ""
-              } ${index === 3 ? "custom-tooltip-fourth" : ""}`}
+              } ${
+                index === 3 ? "custom-tooltip-fourth" : ""
+              } hide-on-small-screen`}
               title={
                 <div className="custom-tooltip-content">
                   <div className="sub_card">

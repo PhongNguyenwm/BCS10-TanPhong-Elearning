@@ -11,7 +11,7 @@ export default function TeachingReview() {
         <div className="smallBox smallboxRightBottom"></div>
         <div class="smallBox smallboxRightTop"></div>
         <div class="smallBox smallboxLeftBottom"></div>
-        <div className="grid grid-cols-12">
+        <div className=" teaching_content grid grid-cols-12">
           <div className="col-span-6">
             <div className="review_image">
               <div className="bg_image">
@@ -30,7 +30,9 @@ export default function TeachingReview() {
               </q>
             </blockquote>
             <p>Phong Dev</p>
-            <span className="">Học viên xuất sắc</span>
+            <div  className="studentGood">
+            <span>Học viên xuất sắc</span>
+            </div>
           </div>
         </div>
       </div>

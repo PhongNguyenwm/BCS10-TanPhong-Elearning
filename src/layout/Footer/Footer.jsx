@@ -55,7 +55,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="col-span-3">
-              <h3 className="text_footerTitle font-bold mb-3">Khóa Học</h3>
+              <h3 className="text_footerTitle footerTitle_1 font-bold mb-3">Khóa Học</h3>
               <ul className="menu_footer">
                 <li>
                   <a href="/DanhMucKhoaHoc?MaDanhMuc=FrontEnd&categoryName=Lập%20trình%20Front%20end&MaNhom=GP01">
@@ -79,7 +79,35 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col-span-3">hello</div>
+            <div className="col-span-3">
+              <h3 className="text_footerTitle footerTitle font-bold mb-3">
+                Đăng Kí Tư Vấn
+              </h3>
+              <form action="">
+                <div>
+                  <input
+                    className="formFooter"
+                    type="text"
+                    placeholder="Họ và tên"
+                    fdprocessedid="zoeb1"
+                  />
+                  <input
+                    className="formFooter"
+                    type="text"
+                    placeholder="Email"
+                    fdprocessedid="54nhv"
+                  />
+                  <input
+                    className="formFooter"
+                    type="text"
+                    placeholder="Số điện thoại"
+                    fdprocessedid="0tx9xk"
+                  />
+                </div>
+              </form>
+              <button className="custom-btn btnGlobal mt-3" fdprocessedid="po29hm">Đăng kí</button>
+
+            </div>
           </div>
           <div className="extra_footer mt-5">
             <div className="text-cardTitle">

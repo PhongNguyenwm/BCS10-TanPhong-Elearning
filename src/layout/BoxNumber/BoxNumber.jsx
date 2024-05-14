@@ -7,7 +7,7 @@ import teacher from "../../assets/img/teacherNumber.png";
 import CountUp from "react-countup";
 export default function BoxNumber() {
   return (
-    <div className="boxNumber container ">
+    <div className="boxNumber  ">
       <div className="boxNumber_content">
         <div className="grid grid-cols-12 justify-center items-center">
           <div className="grid col-span-3">
