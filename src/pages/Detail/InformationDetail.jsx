@@ -5,23 +5,39 @@ import { useParams } from "react-router-dom";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import ReferenceCourse from "../../layout/PopularCourses/ReferenceCourse";
 import Footer from "../../layout/Footer/Footer";
+import { getLocalStorage } from "../../utils/util";
+import { useContext } from "react";
+import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 
 export default function InformationDetail() {
   const [courseDetail, setCourseDetail] = useState(null);
   const { maKhoaHoc } = useParams();
+  const userLocal = getLocalStorage("user");
+  const notify = useContext(NotifyContext);
 
   useEffect(() => {
     coursesManagementServ
       .getCourseListDetail(maKhoaHoc)
       .then((res) => {
-        console.log("🚀 ~ .then ~ res:", res.data);
-
         setCourseDetail(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [maKhoaHoc]);
+
+  const handleRegisterCourse = async () => {
+    try {
+      const enrollData = {
+        maKhoaHoc: maKhoaHoc,
+        taiKhoan: userLocal.taiKhoan,
+      };
+      const res = await coursesManagementServ.registerCourse(enrollData);
+      notify("đăng ký thành công");
+    } catch (err) {
+      notify(err.response.data);
+    }
+  };
 
   return (
     <div className="container">
@@ -335,7 +351,12 @@ export default function InformationDetail() {
                   500.000<sup>đ</sup>
                 </p>
               </div>
-              <button className="btn_review font-medium">Đăng Ký</button>
+              <button
+                onClick={handleRegisterCourse}
+                className="btn_review font-medium"
+              >
+                Đăng Ký
+              </button>
               <div className="sideBarDetail_content">
                 <ul>
                   <li>

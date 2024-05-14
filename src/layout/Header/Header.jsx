@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import logo from "./../../assets/img/logo.png";
 import avatar from "./../../assets/img/avatar.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import styles from "./../Header/header.scss";
 import { Button, Dropdown, Menu, Input } from "antd";
 import { coursesManagementServ } from "../../services/coursesManagement";
-import { getLocalStorage, saveLocalStorage } from "../../utils/util";
+import { getLocalStorage } from "../../utils/util";
 
 const Header = () => {
-  const onSearch = (value, _e, info) => console.log(info?.source, value);
   const [categories, setCategories] = useState([]);
   const [position, setPosition] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
+  const [searchValue, setSearchValue] = useState();
   const { Search } = Input;
+
   useEffect(() => {
     const fetchCourseCatalogs = async () => {
       try {
@@ -24,6 +25,7 @@ const Header = () => {
     };
     fetchCourseCatalogs();
   }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       let moving = window.pageYOffset;
@@ -38,10 +40,19 @@ const Header = () => {
   });
 
   const cls = visible ? "visible" : "hidden";
-  const menu = (
+  const menuCourseCatalog = (
     <Menu>
       {categories.map((category) => (
-        <Menu.Item key={category.maDanhMuc}>{category.tenDanhMuc}</Menu.Item>
+        <Menu.Item key={category.maDanhMuc}>
+          <Link
+            to={{
+              pathname: "/DanhMucKhoaHoc",
+              search: `?MaDanhMuc=${category.maDanhMuc}&categoryName=${category.tenDanhMuc}&MaNhom=GP01`,
+            }}
+          >
+            {category.tenDanhMuc}
+          </Link>
+        </Menu.Item>
       ))}
     </Menu>
   );
@@ -51,48 +62,66 @@ const Header = () => {
     const checkLocalStorage = () => {
       return userLocal !== null;
     };
-    // Kiểm tra và cập nhật trạng thái đăng nhập khi component được mount
     setIsLoggedIn(checkLocalStorage());
   }, []);
   const handleLogout = () => {
-    // localStorage.removeItem("user");
     setIsLoggedIn(false);
+  };
+  const handleSearch = () => {
+    if (searchValue.trim() !== "") {
+      const searchPath = `/TimKiemKhoaHoc?tenKhoaHoc=${searchValue}`;
+      window.location.href = searchPath;
+    }
   };
   return (
     <header className={`${styles.header}, ${cls}`}>
       <nav
-        className=" px-4 lg:px-6 py-2.5 text-base "
+        className="text-base "
         style={{ background: "rgba(255,255,255,.8)" }}
       >
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+        <div className="container flex flex-wrap justify-between items-center w-11/12">
           <a href="/" className="flex items-center">
             <img src={logo} className="h-20" alt="Logo" />
           </a>
           <div className="flex items-center  lg:order-2">
-            {/* <NavLink
-              href="/sign-in"
-              className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
-            >
-              Đăng nhập
-            </NavLink> */}
             {isLoggedIn ? (
-              <div className="flex items-center justify-center">
-                <img className="w-10 h-10 mr-1" src={avatar} alt="avatar" />
-                <p className="mr-2 font-bold">{userLocal.hoTen}</p>
-                <button
-                  onClick={handleLogout}
-                  className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-sans text-base rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
-                >
-                  Đăng xuất
-                </button>
-              </div>
-            ) : (
-              <NavLink
-                to="/sign-in"
-                className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-sans rounded-lg text-base px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
+              <Dropdown
+                overlay={
+                  <Menu>
+                    <Menu.Item>
+                      <NavLink
+                        to={`/Thongtintaikhoan/${userLocal.taiKhoan}/${userLocal.maLoaiNguoiDung}`}
+                      >
+                        Thông tin cá nhân
+                      </NavLink>
+                    </Menu.Item>
+                    <Menu.Item onClick={handleLogout}>Đăng xuất</Menu.Item>
+                  </Menu>
+                }
+                placement="bottom"
+                arrow
+                trigger={["hover"]}
               >
-                Đăng nhập
-              </NavLink>
+                <button className="flex items-center">
+                  <img className="w-10 h-10 mr-1" src={avatar} alt="avatar" />
+                  <p className="mr-2 font-bold">{userLocal.hoTen}</p>
+                </button>
+              </Dropdown>
+            ) : (
+              <div>
+                <NavLink
+                  to="/sign-in"
+                  className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-sans rounded-lg text-base px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
+                >
+                  Đăng nhập
+                </NavLink>
+                <NavLink
+                  to="/sign-up"
+                  className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-sans rounded-lg text-base px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
+                >
+                  Đăng ký
+                </NavLink>
+              </div>
             )}
           </div>
           <div
@@ -100,15 +129,6 @@ const Header = () => {
             id="mobile-menu-2"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-              {/* <li>
-                <NavLink
-                  href="#"
-                  className="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 "
-                  aria-current="page"
-                >
-                  Home
-                </NavLink>
-              </li> */}
               <li>
                 <Search
                   placeholder="tìm kiếm khoá học"
@@ -116,14 +136,17 @@ const Header = () => {
                   allowClear
                   enterButton="Tìm kiếm"
                   size="large"
-                  onSearch={onSearch}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  onPressEnter={handleSearch}
+                  value={searchValue}
+                  onSearch={handleSearch}
                 />
               </li>
 
               <li>
                 <Dropdown
                   className="bg-yellow-300 hover:bg-yellow-400 text-base font-sans"
-                  overlay={menu}
+                  overlay={menuCourseCatalog}
                   placement="bottom"
                   arrow
                 >

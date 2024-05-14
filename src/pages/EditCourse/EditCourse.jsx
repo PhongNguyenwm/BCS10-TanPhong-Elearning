@@ -16,15 +16,13 @@ const EditCourse = () => {
   const [courseCategories, setCourseCategories] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [imageUrl, setImageUrl] = useState(courseInfo?.hinhAnh || "");
-  // const [image, setImage] = useState();
-  console.log(courseInfo);
   const [formData, setFormData] = useState(null);
   useEffect(() => {
     async function fetchCourseCatagories() {
       try {
         const res = await coursesManagementServ.getCoureCatalogs();
-        setCourseCategories(res.data);
         // console.log(res.data);
+        setCourseCategories(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -43,10 +41,7 @@ const EditCourse = () => {
           const res = await coursesManagementServ.getInfoCourse(courseCode);
           const modifiedCourseInfo = {
             ...res.data,
-            maDanhMuc: res.data.danhMucKhoaHoc.maDanhMucKhoahoc,
-            tenDanhMuc: res.data.danhMucKhoaHoc.tenDanhMucKhoaHoc,
           };
-          console.log(modifiedCourseInfo);
           setCourseInfo(modifiedCourseInfo);
           setDataLoaded(true);
           if (modifiedCourseInfo.hinhAnh) {
@@ -59,19 +54,6 @@ const EditCourse = () => {
     }
     fetchCourseInfo();
   }, [courseCategories]);
-
-  // useEffect(() => {
-  //   if (formData) {
-  //     coursesManagementServ
-  //       .editCourse(formData)
-  //       .then((res) => {
-  //         console.log(res);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // }, [formData]);
 
   const userLocal = getLocalStorage("user");
   const disableDate = (current) => {
@@ -91,7 +73,7 @@ const EditCourse = () => {
   } = useFormik({
     enableReinitialize: true,
     initialValues: {
-      maKhoaHoc: courseInfo?.maKhoaHoc || "", // Thêm "?." để tránh lỗi nếu courseInfo là null hoặc undefined
+      maKhoaHoc: courseInfo?.maKhoaHoc || "",
       biDanh: courseInfo?.biDanh || "",
       tenKhoaHoc: courseInfo?.tenKhoaHoc || "",
       moTa: courseInfo?.moTa || "",
@@ -100,35 +82,31 @@ const EditCourse = () => {
       hinhAnh: courseInfo?.hinhAnh || "",
       maNhom: courseInfo?.maNhom || "GP01",
       ngayTao: courseInfo?.ngayTao || "",
-      maDanhMuc: courseInfo?.maDanhMuc || "",
-      tenDanhMuc: courseInfo?.tenDanhMuc || "",
+      maDanhMuc: "",
+      tenDanhMuc: "",
       taiKhoanNguoiTao: courseInfo?.taiKhoanNguoiTao || "",
+      maDanhMucKhoaHoc: courseInfo?.danhMucKhoaHoc?.maDanhMucKhoahoc || "",
+      tenDanhMucKhoaHoc: courseInfo?.danhMucKhoaHoc?.tenDanhMucKhoaHoc || "",
     },
     onSubmit: async (values) => {
       try {
         values.taiKhoanNguoiTao = userLocal.taiKhoan;
         values.biDanh = values.tenKhoaHoc.toLowerCase().replace(/\s+/g, "-");
-
         let formData = new FormData();
+        values.maDanhMucKhoaHoc = values.maDanhMuc;
+        values.tenDanhMucKhoaHoc = values.tenDanhMuc;
         if (values.hinhAnh instanceof File) {
           formData.append("File", values.hinhAnh);
         } else {
-          // Sử dụng đường dẫn hình ảnh từ API nếu không có hình ảnh từ local
           formData.append("hinhAnh", values.hinhAnh);
         }
-
-        // Thêm các trường dữ liệu khác vào formData
         for (let key in values) {
           if (key !== "hinhAnh") {
             formData.append(key, values[key]);
           }
         }
         setFormData(formData);
-
-        console.log("Values:", values);
-
         const res = await coursesManagementServ.editCourse(formData);
-        console.log("Response from editCourse: ", res);
         notify(
           "Sửa khoá học thành công! chuyển hướng về trang quản lý khoá học"
         );
@@ -147,7 +125,9 @@ const EditCourse = () => {
       moTa: Yup.string().required("Vui lòng không bỏ trống"),
       luotXem: Yup.string().required("Vui lòng không bỏ trống"),
       ngayTao: Yup.string().required("Vui lòng không bỏ trống"),
-      maDanhMuc: Yup.string().required("Vui lòng chọn danh mục khoá học"),
+      maDanhMucKhoaHoc: Yup.string().required(
+        "Vui lòng chọn danh mục khoá học"
+      ),
     }),
   });
 
@@ -169,7 +149,6 @@ const EditCourse = () => {
                   onClick={() => {
                     setImageUrl("");
                     setFieldValue("hinhAnh", "");
-                    // document.querySelector('input[type="file"]').value = null;
                   }}
                 >
                   <i class="fa-sharp fa-regular fa-trash-can"></i>
@@ -204,6 +183,7 @@ const EditCourse = () => {
                 touched={touched.maKhoaHoc}
                 label="Mã khoá học"
                 placeholder="Nhập mã khoá học"
+                readOnly={true}
               />
             </div>
             <div className="w-3/4 mb-5 ">
@@ -241,15 +221,17 @@ const EditCourse = () => {
               <Select
                 className="mt-1 block w-full bg-gray-50"
                 size="large"
-                id="maDanhMuc"
-                name="maDanhMuc"
-                onChange={(value) => setFieldValue("maDanhMuc", value)}
+                id="maDanhMucKhoaHoc"
+                name="maDanhMucKhoaHoc"
+                onChange={(value, option) => {
+                  setFieldValue("maDanhMuc", value);
+                  setFieldValue("maDanhMucKhoaHoc", value);
+                  setFieldValue("tenDanhMucKhoaHoc", option.children);
+                }}
                 onBlur={handleBlur}
-                // value={values.tenDanhMucKhoaHoc}
               >
                 {dataLoaded && courseCategories.length > 0
-                  ? // Hiển thị tùy chọn chỉ khi `dataLoaded` và `courseCategories` có dữ liệu
-                    courseCategories.map((category) => (
+                  ? courseCategories.map((category) => (
                       <Select.Option
                         key={category.maDanhMuc}
                         value={category.maDanhMuc}
@@ -317,7 +299,6 @@ const EditCourse = () => {
                   setFieldValue("danhGia", value);
                 }}
                 value={values.danhGia}
-                // allowHalf
               />
             </div>
           </div>
@@ -339,9 +320,6 @@ const EditCourse = () => {
 
         <div style={{ display: "grid", placeItems: "center" }}>
           <button
-            // onClick={() => {
-            //   notify("Thêm phim thành công!");
-            // }}
             className="px-3 py-4 border text-base font-sans rounded text-black bg-yellow-300 hover:bg-yellow-400"
             type="submit"
             onSubmit={handleSubmit}
