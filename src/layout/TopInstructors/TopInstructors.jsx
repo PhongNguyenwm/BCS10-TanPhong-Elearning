@@ -17,14 +17,14 @@ export default function TopInstructors() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 6, // Hiển thị 2 phần tử cùng một lúc
-    slidesToScroll: 4, // Cuộn 2 phần tử khi nhấp vào nút điều hướng
+    slidesToShow: 5, 
+    slidesToScroll: 6, 
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           infinite: true,
           dots: true,
         },
@@ -33,7 +33,7 @@ export default function TopInstructors() {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           initialSlide: 2,
         },
       },
@@ -47,9 +47,9 @@ export default function TopInstructors() {
     ],
   };
   return (
-    <div className="">
+    <div className="top-instructors-container">
       <div className="TopInstructors mt-10 ">
-        <h6 className="instructors_header font-semibold ml-5 mb-10">
+        <h6 className="instructors_header font-semibold ml-3 mb-10">
           <NavLink>Giảng Viên Hàng Đầu</NavLink>
         </h6>
         <div className="slider-wrapper">

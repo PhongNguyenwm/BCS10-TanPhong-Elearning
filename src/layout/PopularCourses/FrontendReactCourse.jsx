@@ -50,7 +50,9 @@ export default function FrontendReactCourse() {
               arrow={mergedArrow}
               overlayClassName={`custom-tooltip ${
                 index === 1 ? "custom-tooltip-second" : ""
-              } ${index === 3 ? "custom-tooltip-fourth" : ""}`}
+              } ${
+                index === 3 ? "custom-tooltip-fourth" : ""
+              } hide-on-small-screen`}
               title={
                 <div className="custom-tooltip-content">
                   <div className="sub_card">
@@ -85,7 +87,6 @@ export default function FrontendReactCourse() {
                     <NavLink
                       to={`/detail/${item.maKhoaHoc}`}
                       key={item.maKhoaHoc}
-                      
                       className="btn_cart"
                     >
                       Xem Chi Tiết
@@ -102,4 +103,3 @@ export default function FrontendReactCourse() {
     </div>
   );
 }
-

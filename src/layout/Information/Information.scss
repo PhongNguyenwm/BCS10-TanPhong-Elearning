@@ -87,9 +87,23 @@
 
 @media (max-width: 992px) {
   .info_content {
-    grid-template-columns: repeat(1, minmax(0, 1fr)); // Chỉ hiển thị một cột trên mỗi hàng
+    grid-template-columns: repeat(
+      1,
+      minmax(0, 1fr)
+    );
   }
-  .info{
+  .info {
     margin-top: 50px;
+  }
+  .infoItemContent {
+    h3 {
+      font-size: 25px;
+    }
+    span{
+      font-size: 14px;
+    }
+    p{
+      font-size: 14px;
+    }
   }
 }
