@@ -100,7 +100,7 @@
     .col-span-3 {
       grid-column: span 2;
     }
-    
+
     .extra_footer {
       flex-direction: column;
       text-align: center;
@@ -109,8 +109,6 @@
 }
 @media (max-width: 1200px) and (min-width: 993px) {
   .footer_body {
-    
-
     .col-span-3 {
       grid-column: span 3;
     }
@@ -122,11 +120,8 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .footer_body {
-   
-
     .col-span-3 {
       grid-column: span 3;
     }
@@ -138,18 +133,71 @@
         justify-content: center;
       }
     }
-   
   }
   .footerTitle {
- padding-top: 20px;
+    padding-top: 20px;
   }
-  .formFooter{
-    width: 1000px;
+
+  .iconFooter {
+    margin-left: 0px;
   }
-  .iconFooter{
-   margin-left: 0px;
+  .footerTitle_1 {
+    padding-top: 20px;
   }
- .footerTitle_1{
- padding-top: 20px;
- }
+  .menu1 {
+    li {
+    
+      padding-bottom: 10px;
+      padding-left: 12px;
+      font-size: 13px;
+      i {
+        font-size: 13px;
+      }
+    }
+  }
+  span {
+    font-size: 13px;
+  }
+  .menu2 {
+    li {
+      padding: 0px;
+      padding-bottom: 10px;
+      i {
+        font-size: 12px;
+      }
+    }
+    span {
+      font-size: 13px;
+    }
+  }
+  .iconFooter {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    transition: all 0.5s;
+  }
+  .text_footerTitle {
+    font-size: 20px;
+    padding-left: 13px;
+    padding: 0;
+  }
+  .footerTitle_1 {
+    padding: 0;
+   
+  
+  }
+  .menu3{
+   
+    li{
+      font-size: 13px ;
+     i{
+      font-size: 13px;
+     }
+    }
+  
+  }
+
 }
