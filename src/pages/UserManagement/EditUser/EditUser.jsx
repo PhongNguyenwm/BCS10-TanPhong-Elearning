@@ -95,9 +95,9 @@ const EditUser = () => {
           setShowUserTypeInput(userData.maLoaiNguoiDung === "GV");
         }
       } catch (err) {
-        notifyError(err.response.data);
-      }
-    };
+        notify(err.response.data);
+      }   
+    }; 
     fetchUser();
   }, [taiKhoan]);
 
