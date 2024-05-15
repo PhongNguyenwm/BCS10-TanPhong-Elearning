@@ -1,0 +1,71 @@
+.titleDetail1 {
+  margin-top: 100px;
+
+  text-transform: uppercase;
+  background-color: #ffd60a;
+  color: #fff;
+}
+.allCourse {
+  padding-top: 50px;
+}
+.bgStyle1 {
+  background: #264653;
+}
+.bgStyle2 {
+  background: #2a9d8f;
+}
+.bgStyle3 {
+  background: #e9c46a;
+}
+.bgStyle4 {
+  background: #f4a261;
+}
+.bgStyle5 {
+  background: #ee8959;
+}
+.bgStyle6 {
+  background: #e76f51;
+}
+.courseBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  text-transform: uppercase;
+  height: 100%;
+  padding: 30px 20px;
+  text-align: center;
+  h6 {
+    padding-bottom: 10px;
+  }
+}
+.courseListPage {
+  .icon_content {
+    color: #ed85ab;
+  }
+}
+
+@media (max-width: 662px) {
+  .allCourse {
+    padding: 20px;
+  }
+}
+@media (max-width: 468px) {
+  .allCourse {
+    .grid-cols-2 {
+      grid-template-columns: repeat(1, minmax(0, 1fr)); // Chỉ hiển thị một cột
+    }
+
+    .courseBox {
+      width: 100%; // Chỉ chiếm toàn bộ chiều rộng
+    }
+
+    .course_item {
+      width: 100%; // Chỉ chiếm toàn bộ chiều rộng
+    }
+  }
+}
+.courseItem1 {
+  width: 90%;
+}

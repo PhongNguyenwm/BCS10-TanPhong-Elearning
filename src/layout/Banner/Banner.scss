@@ -12,8 +12,8 @@
     position: absolute;
     object-fit: contain;
     object-position: center;
-    left: 58%;
-    bottom: 190px;
+    left: 47%;
+    bottom: 110px;
     width: 150px;
     height: auto;
    
@@ -31,12 +31,27 @@
   }
   .banner_content{
     margin-bottom: 30px;
+    
   }
- 
+
+ .banner_content{
+  .img_item{
+    left: 47%;
+    bottom: 60px;
+  }
+ }
 }
 @media (max-width: 484px) {
   .img_item {
   
    padding-right: 30px;
   }
+}
+@media (min-width:995px) and (max-width:1280px) {
+  .banner_content{
+    .img_item{
+      left: 47%;
+      bottom: 80px;
+    }
+   }
 }

@@ -19,7 +19,7 @@ export default function TeachingReview() {
               </div>
             </div>
           </div>
-          <div className="col-span-6 text_review">
+          <div className="col-span-6 text_review ">
             <blockquote className="textQoute ">
               <q>
                 Chương trình giảng dạy được biên soạn dành riêng cho các bạn Lập

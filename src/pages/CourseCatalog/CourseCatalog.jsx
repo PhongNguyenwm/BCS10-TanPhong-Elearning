@@ -8,7 +8,7 @@ import { getLocalStorage } from "../../utils/util";
 import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 import Loading from "../../components/Loading/Loading";
 import useLoading from "../../hooks/useLoading";
-
+import "./CourseCatalog.scss";
 const CourseCatalog = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -63,7 +63,7 @@ const CourseCatalog = () => {
           <h3 className="text-3xl font-bold mb-2">{CategoryName}</h3>
         </div>
         <div
-          className="container grid grid-cols-4 mb-5 gap-10"
+          className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-5 gap-10"
           style={{ width: "90%" }}
         >
           {currentCourses.map((course) => (
