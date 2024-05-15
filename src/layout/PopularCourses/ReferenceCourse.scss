@@ -17,7 +17,7 @@
   color: #65c9ff;
   padding-right: 10px;
 }
-// footer
+
 .referencecourse_item {
   display: flex;
   justify-content: space-between;
@@ -31,17 +31,15 @@
   margin-left: 4px;
 }
 
-// ToolTip
 
 .ant-tooltip-inner {
-  // margin-left: 10px !important;
-  padding: 20px;
+
   display: flex;
   flex-direction: column;
   transition: all 0.5s;
-  width: 360px;
+  width: 376px;
   min-width: 280px;
-  height: 360px;
+  height: 400px;
   word-wrap: break-word;
   color: #333333 !important;
   background-clip: border-box;
@@ -86,4 +84,16 @@
 .custom-tooltip.custom-tooltip-fourth .ant-tooltip-inner {
   left: 38% !important;
   transform: translateX(-38%);
+}
+
+@media (max-width: 1024px) {
+  /* Hoặc kích thước màn hình mà bạn muốn ẩn */
+  .hide-on-small-screen {
+    display: none;
+  }
+}
+@media (max-width: 1280px) {
+  .hide-on-small-screen {
+    display: none;
+  }
 }
