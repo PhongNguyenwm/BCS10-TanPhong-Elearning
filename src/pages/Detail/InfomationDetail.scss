@@ -100,41 +100,34 @@
   }
 }
 
-
-
-// detail_learn 
-.detail_learn li{
+// detail_learn
+.detail_learn li {
   padding: 5px 15px;
-    text-align: justify;
-    i{
-      color: #f6ba35;
-      margin-right: 5px;
-      font-weight: 600;
-      font-size: 18px;
-    }
+  text-align: justify;
+  i {
+    color: #f6ba35;
+    margin-right: 5px;
+    font-weight: 600;
+    font-size: 18px;
+  }
 }
-.detail_content{
- 
-
+.detail_content {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-  
 }
-.section_course{
+.section_course {
   background-color: #fafafa;
   display: flex;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 20px;
-  span{
-
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  span {
     text-transform: uppercase;
     font-size: 22px;
     font-weight: 400;
     margin-right: 20px;
   }
-  
 }
 .btnReview {
   padding: 5px;
@@ -142,25 +135,63 @@
   font-weight: 500;
   text-transform: uppercase;
   color: #41b294;
-  transition: all .7s;
+  transition: all 0.7s;
 }
 
 .btnReview:hover {
   background-color: #41b294;
   color: #fff;
-  transform: scale(0.9); 
+  transform: scale(0.9);
 }
-.lessonContent{
+.lessonContent {
   display: flex;
   padding: 10px;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 1px 1px 2px 1px rgba(239, 244, 190, .27);
-  span{
+  box-shadow: 1px 1px 2px 1px rgba(239, 244, 190, 0.27);
+  span {
     color: #8c8c8c;
   }
   i {
     color: #41b294;
     margin-right: 10px;
+  }
+}
+
+@media (max-width: 992px) {
+  .head_detail {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .detail_teacher {
+    padding-right: 20px;
+  }
+  .section_course span {
+    font-size: 17 px;
+  }
+}
+@media (max-width: 650px) {
+  .head_detail {
+    display: inline-block;
+  }
+  .detail_teacher {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .detailCourseIntro {
+    justify-content: center;
+    padding-left: 40px;
+  }
+  .detailCourseIntro1 {
+    padding-right: 70px;
+  }
+  .detai_teacher {
+    p {
+      text-align: center;
+    }
+  }
+  .teacher_p1 {
+    text-align: center;
   }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./InfomationDetail.scss";
 import instructor1 from "../../assets/img/instrutor1.jpg";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import ReferenceCourse from "../../layout/PopularCourses/ReferenceCourse";
 import Footer from "../../layout/Footer/Footer";
@@ -32,7 +32,7 @@ export default function InformationDetail() {
         maKhoaHoc: maKhoaHoc,
         taiKhoan: userLocal.taiKhoan,
       };
-      await coursesManagementServ.registerCourse(enrollData);
+      const res = await coursesManagementServ.registerCourse(enrollData);
       notify("đăng ký thành công");
     } catch (err) {
       notify(err.response.data);
@@ -40,12 +40,12 @@ export default function InformationDetail() {
   };
 
   return (
-    <div className="container">
+    <div className="">
       <div className="content_detail">
         <div className="grid grid-cols-12">
           <div className="col-span-8">
             <h4 className="mt-14 font-bold text-2xl">
-              {courseDetail?.tenKhoaHoc}
+            {courseDetail?.tenKhoaHoc}
             </h4>
             <div className=" grid grid-cols-12 head_detail">
               <div className="col-span-4">
@@ -72,7 +72,7 @@ export default function InformationDetail() {
                 </div>
               </div>
               <div className="col-span-4">
-                <div className="detailCourseIntro">
+                <div className="detailCourseIntro detailCourseIntro1">
                   <div className="detai_teacher">
                     <div className="reviewDetail">
                       <span className="font-semibold">
@@ -162,7 +162,7 @@ export default function InformationDetail() {
                   </div>
                 </div>
               </div>
-              <div className="container ">
+              <div className=" ">
                 <h6 className="course_content text-xl mt-5">
                   Nội Dung Khóa Học
                 </h6>
@@ -172,7 +172,7 @@ export default function InformationDetail() {
                       <div className="section_course">
                         <span>Mục 1: Giới thiệu</span>
                         <button className="btnGlobal btnReview">
-                          <NavLink to={"/TrangDangXayDung"}>Xem Trước</NavLink>
+                          Xem Trước
                         </button>
                       </div>
                     </div>
@@ -223,14 +223,14 @@ export default function InformationDetail() {
                   <div></div>
                 </div>
               </div>
-              <div className="container ">
+              <div className=" ">
                 <div>
                   <div className="courseDetail_item mt-5">
                     <div className="courseDetail_content">
                       <div className="section_course">
                         <span>MỤC 2: KIẾN THỨC CĂN BẢN</span>
                         <button className="btnGlobal btnReview">
-                          <NavLink to={"/TrangDangXayDung"}>Xem Trước</NavLink>
+                          Xem Trước
                         </button>
                       </div>
                     </div>
@@ -291,14 +291,14 @@ export default function InformationDetail() {
                   <div></div>
                 </div>
               </div>
-              <div className="container ">
+              <div className=" ">
                 <div>
                   <div className="courseDetail_item mt-5">
                     <div className="courseDetail_content">
                       <div className="section_course">
                         <span>MỤC 3: KIẾN THỨC CHUYÊN SÂU</span>
                         <button className="btnGlobal btnReview">
-                          <NavLink to={"/TrangDangXayDung"}>Xem Trước</NavLink>
+                          Xem Trước
                         </button>
                       </div>
                     </div>
