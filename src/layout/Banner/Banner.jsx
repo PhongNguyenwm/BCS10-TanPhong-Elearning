@@ -4,6 +4,7 @@ import { useSpring, animated } from "react-spring";
 import Lottie from "react-lottie";
 
 import * as registerAnimation from "./../../assets/animation/banner.json";
+import { NavLink } from "react-router-dom";
 
 const defaultOptions = {
   loop: true,
@@ -42,9 +43,9 @@ export default function Banner() {
     <div className="banner container" style={{ marginTop: 100 }}>
       <div className="grid grid-cols-12 justify-center">
         <div className="banner_content col-span-6">
-          <div>
+          <div className="img_item">
             <img
-              className="img_item"
+              className=" img_item container"
               src="https://demo2.cybersoft.edu.vn/static/media/paper_plane.93dfdbf5.png"
               alt=""
             />
@@ -70,11 +71,12 @@ export default function Banner() {
                   ))}
               </>
             </div>
+            <NavLink to={`/khoahoc`}>Bắt Đầu</NavLink>
           </div>
         </div>
         <div className="col-span-6">
           <div className="animation_content">
-            <Lottie options={defaultOptions} height={400} width="100%" />
+            <Lottie options={defaultOptions} height="100%" width="100%" />
           </div>
         </div>
       </div>
