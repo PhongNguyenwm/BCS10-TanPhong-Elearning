@@ -23,14 +23,14 @@ export default function PopularCourses() {
   return (
     <div className="course">
       <div className="course_content">
-        <h3>Khóa Học Phổ Biến</h3>
+        <h6 className="text-lg">Khóa Học Phổ Biến</h6>
       </div>
-      <div className="grid grid-cols-12 gap-4 mb-10">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4  mb-5 gap-5">
         {getCourse.slice(3, 7).map((item, index) => (
           <NavLink
             to={`/detail/${item.maKhoaHoc}`}
             key={item.maKhoaHoc}
-            className="course_item col-span-3 sm:col-span-6 md:col-span-6 lg:col-span-3"
+            className="course_item "
           >
             <div className="cart_header">
               <div></div>
