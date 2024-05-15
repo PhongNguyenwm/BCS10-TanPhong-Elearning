@@ -38,8 +38,8 @@ export default function FrontendReactCourse() {
 
   return (
     <div>
-      <div className=" container course_content">
-        <h6 className="text-lg">Khóa học Front End React Js</h6>
+      <div className=" course_content">
+        <h3 className="">Khóa học Front End React Js</h3>
       </div>
       <div className="  grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4   mb-5 gap-5 ">
         {getCourse.slice(17, 21).map((item, index) => {
