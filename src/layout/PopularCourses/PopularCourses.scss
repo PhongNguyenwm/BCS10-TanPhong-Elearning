@@ -54,7 +54,7 @@
   color: #8c8c8c;
 }
 
-// card footer
+
 
 .cart_footer {
   display: flex;
@@ -97,7 +97,7 @@
 }
 
 .card-sale {
-  position: relative; /* Đặt position relative để pseudo-elements có thể được định vị dựa trên nó */
+  position: relative;
 }
 
 .card-sale::before,

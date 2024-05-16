@@ -23,7 +23,7 @@ export default function ToolTip({
         title={title}
       >
         <div className="cart-top">
-          {/* Your cart content */}
+          
           <div className="cart">
             <img className="img_course" src={item.hinhAnh} />
             <p className="name_course">{item.tenKhoaHoc}</p>
