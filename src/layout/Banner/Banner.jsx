@@ -24,7 +24,7 @@ export default function Banner() {
       setCharIndex((prevIndex) => prevIndex + 1);
     }, 200);
 
-    if (charIndex === "V learning".split("").length) {
+    if (!show && charIndex === "V learning".split("").length) {
       clearTimeout(timer);
       setShow(true);
 
@@ -35,7 +35,7 @@ export default function Banner() {
     }
 
     return () => clearTimeout(timer);
-  }, [charIndex]);
+  }, [charIndex, show]);
 
   return (
     <div className="banner container" style={{ marginTop: 100 }}>
@@ -69,7 +69,7 @@ export default function Banner() {
                   ))}
               </>
             </div>
-            <NavLink  className="btnGlobal1" to={`/khoahoc`}>
+            <NavLink className="btnGlobal1" to={`/khoahoc`}>
               Bắt Đầu Nào
             </NavLink>
           </div>

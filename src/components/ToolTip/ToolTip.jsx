@@ -25,7 +25,11 @@ export default function ToolTip({
         <div className="cart-top">
           
           <div className="cart">
-            <img className="img_course" src={item.hinhAnh} />
+            <img
+              className="img_course"
+              alt="hình ảnh khoá học"
+              src={item.hinhAnh}
+            />
             <p className="name_course">{item.tenKhoaHoc}</p>
             <p className="line-clamp-1 mt-5 px-5 mb-2 font-medium">
               {item.moTa}
@@ -35,7 +39,8 @@ export default function ToolTip({
                 <i className="far fa-clock iconOclock"></i>8 giờ
               </span>
               <span className="cart_icon2">
-                <i className="far fa-calendar-alt iconCalendar"></i>4 tuần
+                <i clearCharIndexassName="far fa-calendar-alt iconCalendar"></i>
+                4 tuần
               </span>
               <span className="cart_icon3">
                 <i className="fas fa-signal iconLevel"></i>Tất cả
