@@ -7,7 +7,7 @@ import avatarCard from "../../assets/img/emoji.6d1b7051.png";
 
 export default function ReferenceCourse() {
   const [getCourse, setGetCoure] = useState([]);
-  const [arrow, setArrow] = useState("Show");
+  const [arrow] = useState("Show");
   const [tooltipPosition, setTooltipPosition] = useState("right");
 
   useEffect(() => {

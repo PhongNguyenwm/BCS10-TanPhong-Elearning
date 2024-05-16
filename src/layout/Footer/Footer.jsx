@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Footer.scss";
-import BuidingPage from "../BuidingPage/BuidingPage";
 import { Link } from "react-router-dom";
+import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 export default function Footer() {
+  const notify = useContext(NotifyContext);
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormData({ name: "", email: "", phone: "" });
+    notify("Đăng kí thành công, Chúng tôi sẽ sớm liên hệ với bạn!");
+  };
   return (
     <div className="footer container-fluid">
       <div className="footer_body">
         <div>
           <div className="grid grid-cols-12">
             <div className="col-span-3">
-              <a href="" className="mr-5 text_logo mb-3 font-bold">
+              <a href="/" className="mr-5 text_logo mb-3 font-bold">
                 <span className="textE text-4xl ">E</span> learning
                 <i className="far fa-keyboard iconLogo"></i>
               </a>
@@ -55,7 +69,9 @@ export default function Footer() {
               </ul>
             </div>
             <div className="col-span-3">
-              <h3 className="text_footerTitle footerTitle_1 font-bold mb-3">Khóa Học</h3>
+              <h3 className="text_footerTitle footerTitle_1 font-bold mb-3">
+                Khóa Học
+              </h3>
               <ul className="menu_footer menu3">
                 <li>
                   <a href="/DanhMucKhoaHoc?MaDanhMuc=FrontEnd&categoryName=Lập%20trình%20Front%20end&MaNhom=GP01">
@@ -83,30 +99,46 @@ export default function Footer() {
               <h3 className="text_footerTitle footerTitle font-bold mb-3">
                 Đăng Kí Tư Vấn
               </h3>
-              <form action="">
+              <form onSubmit={handleSubmit}>
                 <div>
                   <input
                     className="formFooter"
                     type="text"
+                    name="name"
                     placeholder="Họ và tên"
                     fdprocessedid="zoeb1"
+                    value={formData.name}
+                    onChange={handleChange}
                   />
                   <input
                     className="formFooter"
                     type="text"
+                    name="email"
                     placeholder="Email"
                     fdprocessedid="54nhv"
+                    value={formData.email}
+                    onChange={handleChange}
                   />
                   <input
                     className="formFooter"
                     type="text"
+                    name="phone"
                     placeholder="Số điện thoại"
                     fdprocessedid="0tx9xk"
+                    value={formData.phone}
+                    onChange={handleChange}
                   />
                 </div>
+                <div>
+                  <button
+                    type="submit"
+                    className="custom-btn btnGlobal mt-3 rounded"
+                    fdprocessedid="po29hm"
+                  >
+                    Đăng kí
+                  </button>
+                </div>
               </form>
-              <button className="custom-btn btnGlobal mt-3" fdprocessedid="po29hm">Đăng kí</button>
-
             </div>
           </div>
           <div className="extra_footer mt-5">
