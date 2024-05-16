@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useResponsive = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -15,8 +15,8 @@ const useResponsive = () => {
     };
   }, []);
 
-  const isMobile = width <= 768;
-  const isTablet = width <= 900;
+  const isMobile = width >= 320 && width <= 480;
+  const isTablet = width >= 600 && width <= 1024;
   const isDesktop = width > 1024;
 
   return { isMobile, isTablet, isDesktop };

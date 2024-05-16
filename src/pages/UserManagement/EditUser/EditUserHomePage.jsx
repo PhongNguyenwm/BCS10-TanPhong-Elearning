@@ -7,11 +7,13 @@ import * as Yup from "yup";
 import { userManagementServ } from "../../../services/userManagement";
 import { NotifyContext } from "../../../template/UserTemplate/UserTemplate";
 import { useNavigate, useParams } from "react-router-dom";
+import useResponsive from "../../../hooks/useResponsive";
 
 const EditUserHomePage = () => {
   const notify = useContext(NotifyContext);
   const navigate = useNavigate();
   const { taiKhoan } = useParams();
+  const { isDesktop, isTablet, isMobile } = useResponsive();
 
   const {
     handleChange,
@@ -94,98 +96,294 @@ const EditUserHomePage = () => {
   };
 
   return (
-    <div className="container ">
-      <h3 className=" text-black text-3xl">Chỉnh sửa thông tin cá nhân</h3>
-      <div className="h-screen flex">
-        <div className="animation_signIn w-7/12 flex items-center justify-center">
-          <Lottie options={defaultOptions} height={400} width={400} />
-        </div>
-        <div className="form_signIn w-5/12 flex items-center justify-center flex-col">
-          <div className="w-full p-10 border border-gray-400 rounded-md space-y-5">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <InputCustom
-                placeholder="Tài khoản"
-                id="taiKhoan"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.taiKhoan}
-                touched={touched.taiKhoan}
-                name="taiKhoan"
-                value={values.taiKhoan}
-                readOnly={true}
-                label={"Tài khoản"}
-              />
-              <InputCustom
-                placeholder="Mật khẩu"
-                id="matKhau"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.matKhau}
-                touched={touched.matKhau}
-                name="matKhau"
-                value={values.matKhau}
-                label={"Mật khẩu"}
-              />
-              <InputCustom
-                placeholder="Họ tên"
-                id="hoTen"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.hoTen}
-                touched={touched.hoTen}
-                name="hoTen"
-                value={values.hoTen}
-                label={"Họ tên"}
-              />
-              <InputCustom
-                placeholder="Email"
-                id="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                type="email"
-                error={errors.email}
-                touched={touched.email}
-                name="email"
-                value={values.email}
-                label={"Email"}
-              />
+    <div>
+      {isDesktop && (
+        <div className="container ">
+          <h3 className=" text-black text-3xl">Chỉnh sửa thông tin cá nhân</h3>
+          <div className="h-screen flex">
+            <div className="animation_signIn w-5/12 flex items-center justify-center">
+              <Lottie options={defaultOptions} height={400} width={400} />
+            </div>
+            <div className="form_signIn w-7/12 flex items-center justify-center flex-col">
+              <div className="w-full p-10 border border-gray-400 rounded-md space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <InputCustom
+                    placeholder="Tài khoản"
+                    id="taiKhoan"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.taiKhoan}
+                    touched={touched.taiKhoan}
+                    name="taiKhoan"
+                    value={values.taiKhoan}
+                    readOnly={true}
+                    label={"Tài khoản"}
+                  />
+                  <InputCustom
+                    placeholder="Mật khẩu"
+                    id="matKhau"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.matKhau}
+                    touched={touched.matKhau}
+                    name="matKhau"
+                    value={values.matKhau}
+                    label={"Mật khẩu"}
+                  />
+                  <InputCustom
+                    placeholder="Họ tên"
+                    id="hoTen"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.hoTen}
+                    touched={touched.hoTen}
+                    name="hoTen"
+                    value={values.hoTen}
+                    label={"Họ tên"}
+                  />
+                  <InputCustom
+                    placeholder="Email"
+                    id="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="email"
+                    error={errors.email}
+                    touched={touched.email}
+                    name="email"
+                    value={values.email}
+                    label={"Email"}
+                  />
 
-              <InputCustom
-                placeholder="Số điện thoại"
-                id="soDt"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.soDt}
-                touched={touched.soDt}
-                name="soDt"
-                value={values.soDt}
-                label={"Số điện thoại"}
-              />
-              <InputCustom
-                placeholder="Mã người dùng"
-                id="maLoaiNguoiDung"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.maLoaiNguoiDung}
-                touched={touched.maLoaiNguoiDung}
-                name="maLoaiNguoiDung"
-                value={values.maLoaiNguoiDung}
-                label={"Mã người dùng"}
-                readOnly={true}
-              />
+                  <InputCustom
+                    placeholder="Số điện thoại"
+                    id="soDt"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.soDt}
+                    touched={touched.soDt}
+                    name="soDt"
+                    value={values.soDt}
+                    label={"Số điện thoại"}
+                  />
+                  <InputCustom
+                    placeholder="Mã người dùng"
+                    id="maLoaiNguoiDung"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.maLoaiNguoiDung}
+                    touched={touched.maLoaiNguoiDung}
+                    name="maLoaiNguoiDung"
+                    value={values.maLoaiNguoiDung}
+                    label={"Mã người dùng"}
+                    readOnly={true}
+                  />
 
-              <div>
-                <button
-                  type="submit"
-                  className="py-2 px-5 bg-yellow-300 hover:bg-yellow-400 text-black rounded-md w-full mt-2 text-base"
-                >
-                  Cập nhật
-                </button>
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      className="py-2 px-8 bg-yellow-300 hover:bg-yellow-400 text-black rounded-md mt-2 text-base"
+                    >
+                      Cập nhật
+                    </button>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+      {isTablet && (
+        <div className="container ">
+          <h3 className=" text-black text-3xl mb-3 ">
+            Chỉnh sửa thông tin cá nhân
+          </h3>
+          <div className="h-screen flex">
+            <div className="animation_signIn w-5/12 flex items-center justify-center">
+              <Lottie options={defaultOptions} height={200} width={200} />
+            </div>
+            <div className="form_signIn w-7/12 flex items-center justify-center flex-col">
+              <div className="w-full p-10 border border-gray-400 rounded-md space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <InputCustom
+                    placeholder="Tài khoản"
+                    id="taiKhoan"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.taiKhoan}
+                    touched={touched.taiKhoan}
+                    name="taiKhoan"
+                    value={values.taiKhoan}
+                    readOnly={true}
+                    label={"Tài khoản"}
+                  />
+                  <InputCustom
+                    placeholder="Mật khẩu"
+                    id="matKhau"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.matKhau}
+                    touched={touched.matKhau}
+                    name="matKhau"
+                    value={values.matKhau}
+                    label={"Mật khẩu"}
+                  />
+                  <InputCustom
+                    placeholder="Họ tên"
+                    id="hoTen"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.hoTen}
+                    touched={touched.hoTen}
+                    name="hoTen"
+                    value={values.hoTen}
+                    label={"Họ tên"}
+                  />
+                  <InputCustom
+                    placeholder="Email"
+                    id="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="email"
+                    error={errors.email}
+                    touched={touched.email}
+                    name="email"
+                    value={values.email}
+                    label={"Email"}
+                  />
+
+                  <InputCustom
+                    placeholder="Số điện thoại"
+                    id="soDt"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.soDt}
+                    touched={touched.soDt}
+                    name="soDt"
+                    value={values.soDt}
+                    label={"Số điện thoại"}
+                  />
+                  <InputCustom
+                    placeholder="Mã người dùng"
+                    id="maLoaiNguoiDung"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.maLoaiNguoiDung}
+                    touched={touched.maLoaiNguoiDung}
+                    name="maLoaiNguoiDung"
+                    value={values.maLoaiNguoiDung}
+                    label={"Mã người dùng"}
+                    readOnly={true}
+                  />
+
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      className="py-2 px-8 bg-yellow-300 hover:bg-yellow-400 text-black rounded-md mt-2 text-base"
+                    >
+                      Cập nhật
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {isMobile && (
+        <div className="container ">
+          <h3 className=" text-black text-2xl mb-3">
+            Chỉnh sửa thông tin cá nhân
+          </h3>
+
+          <div className="h-screen flex justify-center items-center">
+            <div className="form_signIn w-full flex items-center justify-center flex-col">
+              <div className="w-full p-10 border border-gray-400 rounded-md space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <InputCustom
+                    placeholder="Tài khoản"
+                    id="taiKhoan"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.taiKhoan}
+                    touched={touched.taiKhoan}
+                    name="taiKhoan"
+                    value={values.taiKhoan}
+                    readOnly={true}
+                    label={"Tài khoản"}
+                  />
+                  <InputCustom
+                    placeholder="Mật khẩu"
+                    id="matKhau"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.matKhau}
+                    touched={touched.matKhau}
+                    name="matKhau"
+                    value={values.matKhau}
+                    label={"Mật khẩu"}
+                  />
+                  <InputCustom
+                    placeholder="Họ tên"
+                    id="hoTen"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.hoTen}
+                    touched={touched.hoTen}
+                    name="hoTen"
+                    value={values.hoTen}
+                    label={"Họ tên"}
+                  />
+                  <InputCustom
+                    placeholder="Email"
+                    id="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="email"
+                    error={errors.email}
+                    touched={touched.email}
+                    name="email"
+                    value={values.email}
+                    label={"Email"}
+                  />
+
+                  <InputCustom
+                    placeholder="Số điện thoại"
+                    id="soDt"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.soDt}
+                    touched={touched.soDt}
+                    name="soDt"
+                    value={values.soDt}
+                    label={"Số điện thoại"}
+                  />
+                  <InputCustom
+                    placeholder="Mã người dùng"
+                    id="maLoaiNguoiDung"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.maLoaiNguoiDung}
+                    touched={touched.maLoaiNguoiDung}
+                    name="maLoaiNguoiDung"
+                    value={values.maLoaiNguoiDung}
+                    label={"Mã người dùng"}
+                    readOnly={true}
+                  />
+
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      className="py-2 px-8 bg-yellow-300 hover:bg-yellow-400 text-black rounded-md mt-2 text-base"
+                    >
+                      Cập nhật
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

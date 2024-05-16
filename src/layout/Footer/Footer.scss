@@ -89,7 +89,7 @@
   text-transform: uppercase;
   font-size: 15px;
   padding: 5px 10px;
-  color: #fff;
+  color: #000000;
 }
 @media (max-width: 992px) {
   .footer_body {
@@ -146,7 +146,6 @@
   }
   .menu1 {
     li {
-    
       padding-bottom: 10px;
       padding-left: 12px;
       font-size: 13px;
@@ -186,18 +185,13 @@
   }
   .footerTitle_1 {
     padding: 0;
-   
-  
   }
-  .menu3{
-   
-    li{
-      font-size: 13px ;
-     i{
+  .menu3 {
+    li {
       font-size: 13px;
-     }
+      i {
+        font-size: 13px;
+      }
     }
-  
   }
-
 }

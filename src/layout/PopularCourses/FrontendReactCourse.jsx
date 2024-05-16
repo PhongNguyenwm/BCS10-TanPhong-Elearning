@@ -5,7 +5,7 @@ import avatarCard from "../../assets/img/emoji.6d1b7051.png";
 import { coursesManagementServ } from "../../services/coursesManagement";
 export default function FrontendReactCourse() {
   const [getCourse, setGetCoure] = useState([]);
-  const [arrow, setArrow] = useState("Show");
+  const [arrow] = useState("Show");
   const [tooltipPosition, setTooltipPosition] = useState("right");
   useEffect(() => {
     coursesManagementServ

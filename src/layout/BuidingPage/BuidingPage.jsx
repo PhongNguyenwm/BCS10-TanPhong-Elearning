@@ -1,7 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
 import * as buidingAnimation from "../../assets/animation/buidingpage.json";
-import { NavLink } from "react-router-dom";
 
 const BuidingPage = () => {
   const defaultOptions = {
