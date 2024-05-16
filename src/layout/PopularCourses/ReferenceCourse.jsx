@@ -43,18 +43,20 @@ export default function ReferenceCourse() {
   return (
     <div className="">
       <div className="course_content">
-        <h3>Khóa Học Tham Khảo</h3>
+        <h3 className="text-lg">Khóa Học Tham Khảo</h3>
       </div>
-      <div className="grid grid-cols-12 ">
+      <div className="  grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4   mb-5 gap-5 ">
         {getCourse.slice(6, 10).map((item, index) => {
           return (
-            <ToolTip // Sử dụng component Tooltip ở đây
+            <ToolTip
               key={item.maKhoaHoc}
               placement={tooltipPosition[index]}
               arrow={mergedArrow}
               overlayClassName={`custom-tooltip ${
                 index === 1 ? "custom-tooltip-second" : ""
-              } ${index === 3 ? "custom-tooltip-fourth" : ""}`}
+              } ${
+                index === 3 ? "custom-tooltip-fourth" : ""
+              }  hide-on-small-screen`}
               title={
                 <div className="custom-tooltip-content">
                   <div className="sub_card">
@@ -89,7 +91,7 @@ export default function ReferenceCourse() {
                     <NavLink
                       to={`/detail/${item.maKhoaHoc}`}
                       key={item.maKhoaHoc}
-                      className="btn_cart"
+                      className="btn_cart "
                     >
                       Xem Chi Tiết
                     </NavLink>

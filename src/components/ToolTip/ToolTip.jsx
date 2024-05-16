@@ -14,7 +14,7 @@ export default function ToolTip({
     <NavLink
       to={`/detail/${item.maKhoaHoc}`}
       key={item.maKhoaHoc}
-      className="course_item grid col-span-3"
+      className="course_item grid "
     >
       <Tooltip
         placement={placement}

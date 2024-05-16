@@ -54,10 +54,10 @@ const FindCourse = () => {
             <div key={course.maKhoaHoc}>
               <br />
               <hr></hr>
-              <div className="flex mt-2 mb-5">
+              <div className="flex flex-col lg:flex-row mt-2 mb-5">
                 <Link
                   to={`/detail/${course.maKhoaHoc}`}
-                  className="flex w-1/3 mr-5"
+                  className="flex w-full lg:w-1/3 mr-0 lg:mr-5 mb-5 lg:mb-0"
                 >
                   <img src={course.hinhAnh} className="w-full"></img>
                 </Link>

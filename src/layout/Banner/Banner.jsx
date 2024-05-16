@@ -4,6 +4,7 @@ import { useSpring, animated } from "react-spring";
 import Lottie from "react-lottie";
 
 import * as registerAnimation from "./../../assets/animation/banner.json";
+import { NavLink } from "react-router-dom";
 
 const defaultOptions = {
   loop: true,
@@ -21,14 +22,12 @@ export default function Banner() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCharIndex((prevIndex) => prevIndex + 1);
-    }, 200); // Thời gian delay giữa các ký tự
+    }, 200);
 
-    // Reset charIndex khi đã hiển thị hết tất cả các ký tự
     if (charIndex === "V learning".split("").length) {
       clearTimeout(timer);
       setShow(true);
 
-      // Đặt charIndex về 0 sau khoảng thời gian chờ 5s
       setTimeout(() => {
         setCharIndex(0);
         setShow(false);
@@ -42,9 +41,9 @@ export default function Banner() {
     <div className="banner container" style={{ marginTop: 100 }}>
       <div className="grid grid-cols-12 justify-center">
         <div className="banner_content col-span-6">
-          <div>
+          <div className="img_item">
             <img
-              className="img_item"
+              className=" img_item container"
               src="https://demo2.cybersoft.edu.vn/static/media/paper_plane.93dfdbf5.png"
               alt=""
             />
@@ -70,11 +69,14 @@ export default function Banner() {
                   ))}
               </>
             </div>
+            <NavLink  className="btnGlobal1" to={`/khoahoc`}>
+              Bắt Đầu Nào
+            </NavLink>
           </div>
         </div>
         <div className="col-span-6">
           <div className="animation_content">
-            <Lottie options={defaultOptions} height={400} width="100%" />
+            <Lottie options={defaultOptions} height="100%" width="100%" />
           </div>
         </div>
       </div>
@@ -82,13 +84,12 @@ export default function Banner() {
   );
 }
 
-// Component con để hiển thị từng ký tự
 const AnimatedChar = ({ char, index, style }) => {
   const animationProps = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0 },
     config: { duration: 100 },
-    delay: 500 + index * 300, // Tăng độ trễ cho mỗi chữ cái
+    delay: 500 + index * 300,
   });
 
   return (
