@@ -44,7 +44,7 @@ export default function FrontendReactCourse() {
       <div className="  grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4   mb-5 gap-5 ">
         {getCourse.slice(17, 21).map((item, index) => {
           return (
-            <ToolTip // Sử dụng component Tooltip ở đây
+            <ToolTip
               key={item.maKhoaHoc}
               placement={tooltipPosition[index]}
               arrow={mergedArrow}
