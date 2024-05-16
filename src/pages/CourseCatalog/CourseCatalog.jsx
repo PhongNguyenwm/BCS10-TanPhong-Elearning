@@ -52,13 +52,15 @@ const CourseCatalog = () => {
     }
   };
 
-  if (isLoading) {
-    return <Loading />;
-  }
   return (
     <div>
       <Header className="mb-5" />
       <div className="mt-24">
+        {isLoading && (
+          <div>
+            <Loading />
+          </div>
+        )}
         <div className="titleDetail mb-5">
           <h3 className="text-3xl font-bold mb-2">{CategoryName}</h3>
         </div>

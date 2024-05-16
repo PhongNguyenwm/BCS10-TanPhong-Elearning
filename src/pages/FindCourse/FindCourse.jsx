@@ -31,7 +31,7 @@ const FindCourse = () => {
       }
     };
     fetchCoures();
-  }, [coursename]);
+  }, [coursename, turnOnLoading, turnOffLoading, notify]);
 
   const startIndex = (currentPage - 1) * pageSize;
   const currentCourses = courses.slice(startIndex, startIndex + pageSize);
@@ -59,7 +59,11 @@ const FindCourse = () => {
                   to={`/detail/${course.maKhoaHoc}`}
                   className="flex w-full lg:w-1/3 mr-0 lg:mr-5 mb-5 lg:mb-0"
                 >
-                  <img src={course.hinhAnh} className="w-full"></img>
+                  <img
+                    src={course.hinhAnh}
+                    alt="Hình ảnh khoá học"
+                    className="w-full"
+                  ></img>
                 </Link>
                 <div className="flex-row w-full">
                   <h3 className="text-lg font-semibold mb-3">

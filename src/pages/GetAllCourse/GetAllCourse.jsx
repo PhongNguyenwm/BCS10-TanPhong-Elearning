@@ -5,22 +5,28 @@ import { coursesManagementServ } from "../../services/coursesManagement";
 import { NavLink } from "react-router-dom";
 import avartarImage from "../../assets/img/avatar2.bb9626e2.png";
 import "./GetAllCourse.scss";
+import useLoading from "../../hooks/useLoading";
+import Loading from "../../components/Loading/Loading";
 
 export default function GetAllCourse() {
   const [getCourse, setGetCourse] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 12;
+  const { isLoading, turnOnLoading, turnOffLoading } = useLoading();
 
   useEffect(() => {
+    turnOnLoading();
     coursesManagementServ
       .getCourseList()
       .then((res) => {
         setGetCourse(res.data);
+        turnOffLoading();
       })
       .catch((err) => {
         console.log(err);
+        turnOffLoading();
       });
-  }, []);
+  }, [turnOnLoading, turnOffLoading]);
 
   const startIndex = (currentPage - 1) * pageSize;
   const currentCourses = getCourse.slice(startIndex, startIndex + pageSize);
@@ -33,6 +39,11 @@ export default function GetAllCourse() {
     <div>
       <Header />
       <div>
+        {isLoading && (
+          <div>
+            <Loading />
+          </div>
+        )}
         <div className="  titleDetail1 text-xl px-12 py-12">
           <h3 className="text-3xl font-bold">Khóa học</h3>
           <p>Bắt Đầu Hành Trình Nào!!!</p>

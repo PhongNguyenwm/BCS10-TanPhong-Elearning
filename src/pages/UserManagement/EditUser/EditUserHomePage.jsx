@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import InputCustom from "../../../components/Input/InputCustom";
 import * as registerAnimation from "../../../assets/animation/register.json";
 import Lottie from "react-lottie";
@@ -38,7 +38,7 @@ const EditUserHomePage = () => {
           ...values,
           maNhom: "GP01",
         };
-        const res = await userManagementServ.updateUser(data);
+        await userManagementServ.updateUser(data);
         notify("Cập nhật thông tin thành công! Vui lòng đăng nhập lại");
         setTimeout(() => {
           navigate("/");
@@ -84,7 +84,7 @@ const EditUserHomePage = () => {
       }
     };
     fetchUser();
-  }, [taiKhoan]);
+  }, [taiKhoan, notify, setFieldValue]);
 
   const defaultOptions = {
     loop: true,
@@ -98,9 +98,13 @@ const EditUserHomePage = () => {
   return (
     <div>
       {isDesktop && (
-        <div className="container ">
-          <h3 className=" text-black text-3xl">Chỉnh sửa thông tin cá nhân</h3>
-          <div className="h-screen flex">
+        <div className="container mb-5 ">
+          <div className="mb-5">
+            <h3 className=" text-black text-3xl mb-5 ">
+              Chỉnh sửa thông tin cá nhân
+            </h3>
+          </div>
+          <div className="h-screen flex my-10">
             <div className="animation_signIn w-5/12 flex items-center justify-center">
               <Lottie options={defaultOptions} height={400} width={400} />
             </div>

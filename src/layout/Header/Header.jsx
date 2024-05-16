@@ -69,7 +69,7 @@ const Header = () => {
       return userLocal !== null;
     };
     setIsLoggedIn(checkLocalStorage());
-  }, [userLocal]);
+  }, []);
   const handleLogout = () => {
     setIsLoggedIn(false);
   };
@@ -149,14 +149,16 @@ const Header = () => {
                   <Dropdown
                     overlay={
                       <Menu>
-                        <Menu.Item>
+                        <Menu.Item key="infomation">
                           <NavLink
                             to={`/Thongtintaikhoan/${userLocal.taiKhoan}/${userLocal.maLoaiNguoiDung}`}
                           >
                             Thông tin cá nhân
                           </NavLink>
                         </Menu.Item>
-                        <Menu.Item onClick={handleLogout}>Đăng xuất</Menu.Item>
+                        <Menu.Item key="logOut" onClick={handleLogout}>
+                          Đăng xuất
+                        </Menu.Item>
                       </Menu>
                     }
                     placement="bottom"
@@ -315,7 +317,7 @@ const Header = () => {
                   </a>
                 </div>
                 <div className="w-1/2 flex flex-row justify-between items-center">
-                  <div className=" items-center text-center ml-6 ">
+                  <div className=" items-center text-center ml-1 ">
                     <Dropdown
                       overlay={tabletMenu}
                       placement="bottom"
@@ -364,7 +366,7 @@ const Header = () => {
                       <div>
                         <NavLink
                           to="/sign-in"
-                          className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-sans rounded-lg text-base px-4 lg:px-5 py-2 lg:py-2.5 mr-2 "
+                          className="text-gray-800  bg-yellow-300 hover:bg-yellow-400  font-sans rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 "
                         >
                           Đăng nhập
                         </NavLink>
