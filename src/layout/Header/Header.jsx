@@ -25,7 +25,7 @@ const Header = () => {
         const response = await coursesManagementServ.getCoureCatalogs();
         setCategories(response.data);
       } catch (error) {
-        console.error(error.data);
+        notify(error.data);
       }
     };
     fetchCourseCatalogs();

@@ -28,7 +28,7 @@ const CourseCatalog = () => {
         setCourses(res.data);
         turnOffLoading();
       } catch (err) {
-        console.log(err);
+        notify(err.response.data);
       }
     };
     fetchCoures();

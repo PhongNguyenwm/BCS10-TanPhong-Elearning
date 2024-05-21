@@ -21,7 +21,7 @@ const AddCourse = () => {
         const res = await coursesManagementServ.getCoureCatalogs();
         setCourseCategories(res.data);
       } catch (err) {
-        console.log(err);
+        notify(err.response.data);
       }
     }
     fetchCourseCatagories();
@@ -80,7 +80,6 @@ const AddCourse = () => {
           navigate("/admin/quan-li-khoa-hoc");
         }, 1000);
       } catch (error) {
-        console.log(error);
         notify(error.response.data);
       }
     },

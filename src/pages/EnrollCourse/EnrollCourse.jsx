@@ -27,7 +27,7 @@ const EnrollCourse = ({ match }) => {
       const res = await coursesManagementServ.getUserUnEnroll(requestData);
       setUserUnEnroll(res.data);
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
 
@@ -40,7 +40,7 @@ const EnrollCourse = ({ match }) => {
         setSearchWaitList(res.data);
       }
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
 
@@ -55,7 +55,7 @@ const EnrollCourse = ({ match }) => {
         setSearchEnrolledList(res.data);
       }
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
 
@@ -76,7 +76,7 @@ const EnrollCourse = ({ match }) => {
       fetchUserUnEnroll(course);
       fetchCourseStudentsList();
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
 
@@ -95,7 +95,7 @@ const EnrollCourse = ({ match }) => {
 
       fetchWaitListData();
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
 
@@ -109,7 +109,7 @@ const EnrollCourse = ({ match }) => {
           fetchUserUnEnroll(res.data);
         }
       } catch (err) {
-        console.log(err);
+        notify(err.response.data);
       }
     };
     fetchInfoCourse();

@@ -1,11 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import ToolTip from "../../components/ToolTip/ToolTip";
 import "./ReferenceCourse.scss";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import avatarCard from "../../assets/img/emoji.6d1b7051.png";
+import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 
 export default function ReferenceCourse() {
+  const notify = useContext(NotifyContext);
   const [getCourse, setGetCoure] = useState([]);
   const [arrow] = useState("Show");
   const [tooltipPosition, setTooltipPosition] = useState("right");
@@ -17,7 +19,7 @@ export default function ReferenceCourse() {
         setGetCoure(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        notify(err.response.data);
       });
   }, []);
 
