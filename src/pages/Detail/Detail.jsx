@@ -2,6 +2,7 @@ import React from "react";
 import "./Detail.scss";
 import Header from "../../layout/Header/Header";
 import InformationDetail from "./InformationDetail";
+import BackToTop from "../../layout/BackToTop/BackToTop";
 export default function Detail() {
   return (
     <div>
@@ -13,6 +14,9 @@ export default function Detail() {
         <p>Tiến Lên Và Không Chần Chừ !!!</p>
       </div>
       <InformationDetail/>
+      <div className="back-to-top-container">
+        <BackToTop />
+      </div>
     </div>
   );
 }

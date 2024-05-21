@@ -9,6 +9,7 @@ import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 import Loading from "../../components/Loading/Loading";
 import useLoading from "../../hooks/useLoading";
 import "./CourseCatalog.scss";
+import BackToTop from "../../layout/BackToTop/BackToTop";
 const CourseCatalog = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -105,6 +106,9 @@ const CourseCatalog = () => {
         />
       </div>
       <Footer />
+      <div className="back-to-top-container">
+        <BackToTop />
+      </div>
     </div>
   );
 };

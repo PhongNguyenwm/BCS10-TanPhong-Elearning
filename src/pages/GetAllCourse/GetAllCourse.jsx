@@ -6,8 +6,9 @@ import { NavLink } from "react-router-dom";
 import avartarImage from "../../assets/img/avatar2.bb9626e2.png";
 import "./GetAllCourse.scss";
 import useLoading from "../../hooks/useLoading";
-import Loading from "../../components/Loading/Loading";
 import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
+import Loading from "../../components/Loading/Loading";
+import BackToTop from "../../layout/BackToTop/BackToTop";
 
 export default function GetAllCourse() {
   const [getCourse, setGetCourse] = useState([]);
@@ -167,6 +168,9 @@ export default function GetAllCourse() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="back-to-top-container">
+        <BackToTop />
       </div>
     </div>
   );
