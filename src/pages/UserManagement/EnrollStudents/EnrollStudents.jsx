@@ -25,7 +25,7 @@ const EnrollStudents = ({ match }) => {
       const res = await userManagementServ.getCourseUnEnroll(account);
       setCoursesUnEnroll(res.data);
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
   const fetchWaitListData = async () => {
@@ -38,7 +38,7 @@ const EnrollStudents = ({ match }) => {
         setSearchWaitList(res.data);
       }
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
   const fetchEnrolledCourses = async () => {
@@ -51,7 +51,7 @@ const EnrollStudents = ({ match }) => {
         setSearchEnrolledList(res.data);
       }
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
   const handleEnroll = async (selectedCourse) => {
@@ -71,7 +71,7 @@ const EnrollStudents = ({ match }) => {
       fetchCoursesUnEnroll();
       fetchEnrolledCourses();
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
   const handleCancelEnroll = async (courseCode) => {
@@ -88,7 +88,7 @@ const EnrollStudents = ({ match }) => {
       fetchWaitListData();
       fetchEnrolledCourses();
     } catch (err) {
-      console.log(err);
+      notify(err.response.data);
     }
   };
   useEffect(() => {
@@ -103,7 +103,7 @@ const EnrollStudents = ({ match }) => {
           fetchEnrolledCourses();
         }
       } catch (err) {
-        console.log(err);
+        notify(err.response.data);
       }
     };
     fetchStudentsInfo();

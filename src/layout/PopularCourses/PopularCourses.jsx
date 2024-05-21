@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./PopularCourses.scss";
 import { coursesManagementServ } from "../../services/coursesManagement";
 import avartarImage from "../../assets/img/avatar2.bb9626e2.png";
 import ReferenceCourse from "./ReferenceCourse";
 import FrontendReactCourse from "./FrontendReactCourse";
+import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 
 export default function PopularCourses() {
   const [getCourse, setGetCourse] = useState([]);
+  const notify = useContext(NotifyContext);
 
   useEffect(() => {
     coursesManagementServ
@@ -16,7 +18,7 @@ export default function PopularCourses() {
         setGetCourse(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        notify(err.response.data);
       });
   }, []);
 

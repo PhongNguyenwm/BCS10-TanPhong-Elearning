@@ -28,8 +28,7 @@ const SignUp = () => {
       onSubmit: async (values) => {
         values.maNhom = "GP01";
         try {
-          const res = await userManagementServ.signUp(values);
-          console.log(res);
+          await userManagementServ.signUp(values);
           notify("Đăng ký thành công, vui lòng đăng nhập để tiếp tục");
           setTimeout(() => {
             navigate("/sign-in");

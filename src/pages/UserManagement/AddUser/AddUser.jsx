@@ -20,7 +20,7 @@ const AddUser = () => {
         const res = await userManagementServ.getUserTypes();
         setUserTypes(res.data);
       } catch (err) {
-        console.log(err.data);
+        notify(err.response.data);
       }
     };
     fetchUserTypes();
@@ -44,7 +44,6 @@ const AddUser = () => {
       email: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
       try {
         const data = {
           ...values,
@@ -52,7 +51,6 @@ const AddUser = () => {
           maLoaiNguoiDung: values.maLoai === "GV" ? "GV" : "HV",
         };
         const res = await userManagementServ.addUser(data);
-        console.log(res);
         notify("Thêm user thành công, trở về trang quản lí người dùng");
         setTimeout(() => {
           navigate("/admin/quan-li-nguoi-dung");
@@ -169,7 +167,6 @@ const AddUser = () => {
                   name="maLoai"
                   onChange={(value) => {
                     setFieldValue("maLoai", value);
-                    console.log("giá trị của mã loại", value);
                   }}
                   onBlur={handleBlur}
                   value={values.maLoai}

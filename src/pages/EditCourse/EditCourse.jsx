@@ -21,10 +21,9 @@ const EditCourse = () => {
     async function fetchCourseCatagories() {
       try {
         const res = await coursesManagementServ.getCoureCatalogs();
-        // console.log(res.data);
         setCourseCategories(res.data);
       } catch (err) {
-        console.log(err);
+        notify(err.response.data);
       }
     }
     fetchCourseCatagories();
@@ -49,7 +48,7 @@ const EditCourse = () => {
           }
         }
       } catch (err) {
-        console.log(err);
+        notify(err.response.data);
       }
     }
     fetchCourseInfo();
@@ -115,7 +114,6 @@ const EditCourse = () => {
           navigate("/admin/quan-li-khoa-hoc");
         }, 1000);
       } catch (error) {
-        console.log(error);
         notify(error.response.data);
       }
     },

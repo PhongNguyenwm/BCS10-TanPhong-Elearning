@@ -37,7 +37,7 @@ const CourseManagement = () => {
         setArrCourse(sortedCoursesWithoutMomentDate);
         setOriginalArrCourse(sortedCoursesWithoutMomentDate);
       } catch (err) {
-        console.log(err);
+        notify(err.response.data);
       }
     };
     fetchCourses();
@@ -68,7 +68,7 @@ const CourseManagement = () => {
         setArrCourse(originalArrCourse);
       }
     } catch (err) {
-      console.log("Error while searching", err);
+      notify("Error while searching", err.response.data);
     }
   };
   const onSearchChange = (e) => {

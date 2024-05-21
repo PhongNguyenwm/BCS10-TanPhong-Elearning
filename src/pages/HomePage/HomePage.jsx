@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   handleTurnOnLoading,
@@ -14,8 +14,10 @@ import TopInstructors from "../../layout/TopInstructors/TopInstructors";
 import TeachingReview from "../../layout/TeachingReview/TeachingReview";
 import Footer from "../../layout/Footer/Footer";
 import BackToTop from "../../layout/BackToTop/BackToTop";
+import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 
 const HomePage = () => {
+  const notify = useContext(NotifyContext);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.loadingSlice.isLoading);
 
@@ -25,7 +27,7 @@ const HomePage = () => {
       try {
         await new Promise((resolve) => setTimeout(resolve, 2500));
       } catch (error) {
-        console.error(error);
+        notify(error.response.data);
       } finally {
         dispatch(handleTurnOffLoading());
       }

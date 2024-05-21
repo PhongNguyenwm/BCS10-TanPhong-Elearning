@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../layout/Header/Header";
 import { Pagination } from "antd";
 import { coursesManagementServ } from "../../services/coursesManagement";
@@ -7,12 +7,14 @@ import avartarImage from "../../assets/img/avatar2.bb9626e2.png";
 import "./GetAllCourse.scss";
 import useLoading from "../../hooks/useLoading";
 import Loading from "../../components/Loading/Loading";
+import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 
 export default function GetAllCourse() {
   const [getCourse, setGetCourse] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 12;
   const { isLoading, turnOnLoading, turnOffLoading } = useLoading();
+  const notify = useContext(NotifyContext);
 
   useEffect(() => {
     turnOnLoading();
@@ -23,7 +25,7 @@ export default function GetAllCourse() {
         turnOffLoading();
       })
       .catch((err) => {
-        console.log(err);
+        notify(err.response.data);
         turnOffLoading();
       });
   }, [turnOnLoading, turnOffLoading]);
@@ -45,8 +47,8 @@ export default function GetAllCourse() {
           </div>
         )}
         <div className="  titleDetail1 text-xl px-12 py-12">
-          <h3 className="text-3xl font-bold">Khóa học</h3>
-          <p>Bắt Đầu Hành Trình Nào!!!</p>
+          <h3 className="text-black text-3xl font-bold">Khóa học</h3>
+          <p className="text-black">Bắt Đầu Hành Trình Nào!!!</p>
         </div>
         <div className=" container allCourse pt-">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mb-5 ">

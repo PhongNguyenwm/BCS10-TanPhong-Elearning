@@ -22,8 +22,7 @@ const UserEnrolledList = () => {
         const res = await userManagementServ.getUserEnrolledCourses();
         setCoursesEnrolled(res.data.chiTietKhoaHocGhiDanh);
       } catch (err) {
-        console.log(err);
-        notify(err);
+        notify(err.response.data);
       }
     };
     fetchCouresEnrolled();
@@ -42,8 +41,7 @@ const UserEnrolledList = () => {
       setCoursesEnrolled(updateCourses);
       notify("Hủy ghi danh thành công");
     } catch (err) {
-      console.log(err);
-      notify(err);
+      notify(err.response.data);
     }
   };
 

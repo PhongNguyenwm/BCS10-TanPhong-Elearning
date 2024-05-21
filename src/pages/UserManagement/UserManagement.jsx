@@ -22,7 +22,7 @@ const UserManagerment = () => {
       const result = await userManagementServ.getUserList();
       setUserList(result.data);
     } catch (error) {
-      console.log("error", error);
+      notify(error.response.data);
     }
   };
 
@@ -33,7 +33,7 @@ const UserManagerment = () => {
       });
       setUserList(result.data);
     } catch (error) {
-      console.log("error", error);
+      notify(error.response.data);
     }
   };
 

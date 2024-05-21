@@ -57,8 +57,7 @@ const EditUser = () => {
           navigate("/admin/quan-li-nguoi-dung");
         }, 1000);
       } catch (error) {
-        console.log(error);
-        notify(error);
+        notify(error.response.data);
         setTimeout(() => {}, 1000);
       }
     },
@@ -185,7 +184,6 @@ const EditUser = () => {
                     name="maLoai"
                     onChange={(value) => {
                       setFieldValue("maLoai", value);
-                      console.log("giá trị của mã loại", value);
                     }}
                     onBlur={handleBlur}
                     value={values.maLoai}

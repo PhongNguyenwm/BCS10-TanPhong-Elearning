@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import avatar from "./../../assets/img/avatar.png";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UserAddOutlined,
   UserOutlined,
-  VideoCameraOutlined,
   BookOutlined,
 } from "@ant-design/icons";
 import { NavLink, Outlet } from "react-router-dom";
@@ -20,15 +18,6 @@ const { Header, Sider, Content } = Layout;
 export const NotifyContext = React.createContext(null);
 const AdminTemplate = () => {
   const userLocal = getLocalStorage("user");
-  useEffect(() => {
-    const user = getLocalStorage("user");
-    if (!user) {
-      window.location.href = "https://google.com";
-    }
-    if (user?.maLoaiNguoiDung !== "GV") {
-      window.location.href = "https://google.com";
-    }
-  }, []);
 
   const [collapsed, setCollapsed] = useState(false);
   const {
@@ -38,6 +27,21 @@ const AdminTemplate = () => {
   const renderNotify = (notify) => {
     return toast(notify);
   };
+
+  useEffect(() => {
+    const user = getLocalStorage("user");
+    if (!user) {
+      renderNotify("Bạn chưa đăng nhập");
+      setTimeout(() => {
+        window.location.href = "sign-in";
+      }, 2500);
+    } else if (user?.maLoaiNguoiDung !== "GV") {
+      renderNotify("Bạn không có quyền truy cập");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2500);
+    }
+  }, []);
 
   return (
     <NotifyContext.Provider value={renderNotify}>
