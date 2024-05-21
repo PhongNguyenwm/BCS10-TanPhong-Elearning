@@ -7,6 +7,7 @@ import { NotifyContext } from "../../template/UserTemplate/UserTemplate";
 import { Pagination, Rate } from "antd";
 import Loading from "../../components/Loading/Loading";
 import useLoading from "../../hooks/useLoading";
+import BackToTop from "../../layout/BackToTop/BackToTop";
 
 const FindCourse = () => {
   const notify = useContext(NotifyContext);
@@ -86,6 +87,9 @@ const FindCourse = () => {
         />
       </div>
       <Footer />
+      <div className="back-to-top-container">
+        <BackToTop />
+      </div>
     </div>
   );
 };

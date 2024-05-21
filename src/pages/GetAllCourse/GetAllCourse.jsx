@@ -5,6 +5,7 @@ import { coursesManagementServ } from "../../services/coursesManagement";
 import { NavLink } from "react-router-dom";
 import avartarImage from "../../assets/img/avatar2.bb9626e2.png";
 import "./GetAllCourse.scss";
+import BackToTop from "../../layout/BackToTop/BackToTop";
 
 export default function GetAllCourse() {
   const [getCourse, setGetCourse] = useState([]);
@@ -154,6 +155,9 @@ export default function GetAllCourse() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="back-to-top-container">
+        <BackToTop />
       </div>
     </div>
   );
