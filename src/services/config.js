@@ -3,7 +3,7 @@ export const http = axios.create({
   baseURL: "https://elearningnew.cybersoft.edu.vn/api",
   headers: {
     tokenCyberSoft:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCBTw6FuZyAxMCIsIkhldEhhblN0cmluZyI6IjAxLzA5LzIwMjQiLCJIZXRIYW5UaW1lIjoiMTcyNTE0ODgwMDAwMCIsIm5iZiI6MTY5ODY4NTIwMCwiZXhwIjoxNzI1Mjk2NDAwfQ.CPY1b9IiMcklQZ9hjqIzrdiOlQ5YnV4VpzGu_yZr7G0",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCBTXHUwMGUxbmcgMTAiLCJIZXRIYW5TdHJpbmciOiIwMS8wOS8yMDI0IiwiSGV0SGFuVGltZSI6IjE3MjUxNDg4MDAwMDAiLCJuYmYiOjE2OTg2ODUyMDAsImV4cCI6MTc2NzIyNTU5OX0.0dUDEMt1iBLA2haTnrKqKPLKPz2x4MAmVZlxXq-ff54",
   },
   timeout: 30000,
 });
